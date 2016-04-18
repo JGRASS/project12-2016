@@ -1,10 +1,8 @@
 package groblje;
 
-
 import java.util.GregorianCalendar;
 
 import java.util.LinkedList;
-
 
 import grobljeInterfejs.GrobljeInterfejs;
 
@@ -41,7 +39,8 @@ public class Groblje implements GrobljeInterfejs {
 
 	@Override
 	public boolean imaLiSlobodnihMesta() {
-		if(getBrojSlobodnih() == 0) return false;
+		if (getBrojSlobodnih() == 0)
+			return false;
 		return true;
 	}
 
@@ -61,20 +60,27 @@ public class Groblje implements GrobljeInterfejs {
 	public void oslobodiGrob() {
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi.length; j++) {
-				if(grobovi[i][j]!=null && grobovi[i][j].getDatumSmrti()!=null){
-					if(new GregorianCalendar().YEAR - grobovi[i][j].getDatumSmrti().YEAR > 99){
+				if (grobovi[i][j] != null && grobovi[i][j].getDatumSmrti() != null) {
+					if (new GregorianCalendar().YEAR - grobovi[i][j].getDatumSmrti().YEAR > 99) {
 						grobovi[i][j] = null;
 					}
 				}
 			}
 		}
-		
 
 	}
 
 	@Override
 	public void unesiUmrlog(Grob g) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < grobovi.length; i++) {
+			for (int j = 0; j < grobovi.length; j++) {
+				if (grobovi[i][j] == null) {
+					grobovi[i][j] = g;
+					return;
+				}
+			}
+		}
+		throw new RuntimeException("Sva mesta su zauzeta!");
 
 	}
 
@@ -83,7 +89,7 @@ public class Groblje implements GrobljeInterfejs {
 		// TODO Auto-generated method stub
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi.length; j++) {
-				if(grobovi[i][j].getSifra().equals(sifra)) {
+				if (grobovi[i][j].getSifra().equals(sifra)) {
 					return grobovi[i][j].isRezervisano();
 				}
 			}
@@ -97,13 +103,12 @@ public class Groblje implements GrobljeInterfejs {
 		LinkedList<Grob> pretrazeni = new LinkedList<Grob>();
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi.length; j++) {
-				if(grobovi[i][j].getImePrezime().equals(imePrezime)) {
+				if (grobovi[i][j].getImePrezime().equals(imePrezime)) {
 					pretrazeni.add(grobovi[i][j]);
 				}
 			}
 		}
 		return pretrazeni;
-
 
 	}
 
