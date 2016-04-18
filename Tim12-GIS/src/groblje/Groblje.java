@@ -1,6 +1,10 @@
 package groblje;
 
+
 import java.util.GregorianCalendar;
+
+import java.util.LinkedList;
+
 
 import grobljeInterfejs.GrobljeInterfejs;
 
@@ -37,8 +41,8 @@ public class Groblje implements GrobljeInterfejs {
 
 	@Override
 	public boolean imaLiSlobodnihMesta() {
-		// TODO Auto-generated method stub
-		return false;
+		if(getBrojSlobodnih() == 0) return false;
+		return true;
 	}
 
 	@Override
@@ -77,20 +81,30 @@ public class Groblje implements GrobljeInterfejs {
 	@Override
 	public boolean daLiJeSlobodno(String sifra) {
 		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Grob pretraziMrtve(String imePrezime) {
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi.length; j++) {
-				if(grobovi[i][j]!=null && grobovi[i][j].getImePrezime()!=null){
-					if(grobovi[i][j].getImePrezime().equals(imePrezime))
-						return grobovi[i][j];
+				if(grobovi[i][j].getSifra().equals(sifra)) {
+					return grobovi[i][j].isRezervisano();
 				}
 			}
 		}
-		return null;
+		throw new RuntimeException("Ne postoji grobno mesto sa unetom sifrom.");
+	}
+
+	@Override
+
+	public LinkedList<Grob> pretraziMrtve(String imePrezime) {
+		LinkedList<Grob> pretrazeni = new LinkedList<Grob>();
+		for (int i = 0; i < grobovi.length; i++) {
+			for (int j = 0; j < grobovi.length; j++) {
+				if(grobovi[i][j].getImePrezime().equals(imePrezime)) {
+					pretrazeni.add(grobovi[i][j]);
+				}
+			}
+		}
+		return pretrazeni;
+
+
 	}
 
 }
