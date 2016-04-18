@@ -1,5 +1,7 @@
 package grobljeInterfejs;
 
+import java.util.LinkedList;
+
 import groblje.Grob;
 
 public interface GrobljeInterfejs {
@@ -8,7 +10,7 @@ public interface GrobljeInterfejs {
 	
 	public boolean daLiJeSlobodno(String sifra);
 	
-	public Grob pretraziMrtve(String imePrezime);
+	public LinkedList<Grob> pretraziMrtve(String imePrezime);
 
 	public void rezervisi(String sifra);
 	

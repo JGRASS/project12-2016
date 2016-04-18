@@ -1,5 +1,7 @@
 package groblje;
 
+import java.util.LinkedList;
+
 import grobljeInterfejs.GrobljeInterfejs;
 
 public class Groblje implements GrobljeInterfejs {
@@ -35,8 +37,8 @@ public class Groblje implements GrobljeInterfejs {
 
 	@Override
 	public boolean imaLiSlobodnihMesta() {
-		// TODO Auto-generated method stub
-		return false;
+		if(getBrojSlobodnih() == 0) return false;
+		return true;
 	}
 
 	@Override
@@ -66,13 +68,28 @@ public class Groblje implements GrobljeInterfejs {
 	@Override
 	public boolean daLiJeSlobodno(String sifra) {
 		// TODO Auto-generated method stub
-		return false;
+		for (int i = 0; i < grobovi.length; i++) {
+			for (int j = 0; j < grobovi.length; j++) {
+				if(grobovi[i][j].getSifra().equals(sifra)) {
+					return grobovi[i][j].isRezervisano();
+				}
+			}
+		}
+		throw new RuntimeException("Ne postoji grobno mesto sa unetom sifrom.");
 	}
 
 	@Override
-	public Grob pretraziMrtve(String imePrezime) {
-		// TODO Auto-generated method stub
-		return null;
+	public LinkedList<Grob> pretraziMrtve(String imePrezime) {
+		LinkedList<Grob> pretrazeni = new LinkedList<Grob>();
+		for (int i = 0; i < grobovi.length; i++) {
+			for (int j = 0; j < grobovi.length; j++) {
+				if(grobovi[i][j].getImePrezime().equals(imePrezime)) {
+					pretrazeni.add(grobovi[i][j]);
+				}
+			}
+		}
+		return pretrazeni;
+
 	}
 
 }
