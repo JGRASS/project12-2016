@@ -6,7 +6,7 @@ public class Groblje implements GrobljeInterfejs {
 
 	private String naziv;
 	private String adresa;
-	private Grob[] grobovi;
+	private Grob[][] grobovi = new Grob[20][20];
 	private int brojSlobodnih;
 
 	public String getNaziv() {
@@ -40,39 +40,39 @@ public class Groblje implements GrobljeInterfejs {
 	}
 
 	@Override
-	public boolean daLiJeSlobodno(Grob g) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public Grob pretraziMrtve() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public void rezervisi(String sifra) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void oslobodiRezervaciju(String sifra) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void oslobodiGrob() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void unesiUmrlog(Grob g) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public boolean daLiJeSlobodno(String sifra) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Grob pretraziMrtve(String imePrezime) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

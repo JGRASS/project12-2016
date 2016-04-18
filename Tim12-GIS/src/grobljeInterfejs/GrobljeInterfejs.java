@@ -6,9 +6,9 @@ public interface GrobljeInterfejs {
 
 	public boolean imaLiSlobodnihMesta ();
 	
-	public boolean daLiJeSlobodno(Grob g);
+	public boolean daLiJeSlobodno(String sifra);
 	
-	public Grob pretraziMrtve();
+	public Grob pretraziMrtve(String imePrezime);
 
 	public void rezervisi(String sifra);
 	
