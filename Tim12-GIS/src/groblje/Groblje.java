@@ -82,7 +82,14 @@ public class Groblje implements GrobljeInterfejs {
 
 	@Override
 	public Grob pretraziMrtve(String imePrezime) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < grobovi.length; i++) {
+			for (int j = 0; j < grobovi.length; j++) {
+				if(grobovi[i][j]!=null && grobovi[i][j].getImePrezime()!=null){
+					if(grobovi[i][j].getImePrezime().equals(imePrezime))
+						return grobovi[i][j];
+				}
+			}
+		}
 		return null;
 	}
 
