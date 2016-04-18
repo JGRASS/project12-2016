@@ -1,5 +1,7 @@
 package groblje;
 
+import java.util.GregorianCalendar;
+
 import grobljeInterfejs.GrobljeInterfejs;
 
 public class Groblje implements GrobljeInterfejs {
@@ -53,7 +55,16 @@ public class Groblje implements GrobljeInterfejs {
 
 	@Override
 	public void oslobodiGrob() {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < grobovi.length; i++) {
+			for (int j = 0; j < grobovi.length; j++) {
+				if(grobovi[i][j]!=null && grobovi[i][j].getDatumSmrti()!=null){
+					if(new GregorianCalendar().YEAR - grobovi[i][j].getDatumSmrti().YEAR > 99){
+						grobovi[i][j] = null;
+					}
+				}
+			}
+		}
+		
 
 	}
 
