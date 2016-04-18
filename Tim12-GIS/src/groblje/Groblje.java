@@ -41,13 +41,61 @@ public class Groblje implements GrobljeInterfejs {
 
 	@Override
 	public void rezervisi(String sifra) {
-		// TODO Auto-generated method stub
+		if ( sifra == null || sifra.equals("") ) {
+			throw new RuntimeException("Greska!");
+		}
+		
+		if ( !(imaLiSlobodnihMesta()) ) {
+			throw new RuntimeException("Nema slobodnih grobova.");
+		}
+		
+		boolean izvrseno = false;
+		
+		for (int i = 0; i < grobovi.length; i++) {
+			for (int j = 0; j < grobovi[i].length; j++) {
+				if ( grobovi[i][j].getSifra().equals(sifra) ) {
+					if ( grobovi[i][j].isRezervisano() ) {
+						throw new RuntimeException("Grob " + sifra + " je vec rezervisan!");
+					} else {
+						grobovi[i][j].setRezervisano(true);
+						brojSlobodnih--;
+						izvrseno = true;
+					}
+				}
+			}
+		}
+		
+		if ( !(izvrseno) ) {
+			throw new RuntimeException("Grob sa sifrom " + sifra + " ne postoji!");
+		}
 
 	}
 
 	@Override
 	public void oslobodiRezervaciju(String sifra) {
-		// TODO Auto-generated method stub
+		if ( sifra == null || sifra.equals("") ) {
+			throw new RuntimeException("Greska!");
+		}
+		
+		boolean izvrseno = false;
+
+		for (int i = 0; i < grobovi.length; i++) {
+			for (int j = 0; j < grobovi[i].length; j++) {
+				if ( grobovi[i][j].getSifra().equals(sifra) ) {
+					if ( grobovi[i][j].isRezervisano() ) {
+						grobovi[i][j].setRezervisano(false);
+						brojSlobodnih++;
+						izvrseno = true;
+					} else {
+						throw new RuntimeException("Grob " + sifra + " nije rezervisan!");
+					}
+				}
+			}
+		}
+		
+		if ( !(izvrseno) ) {
+			throw new RuntimeException("Grob sa sifrom " + sifra + " ne postoji!");
+		}
 
 	}
 
