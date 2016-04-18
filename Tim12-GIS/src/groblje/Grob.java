@@ -4,13 +4,13 @@ import java.util.GregorianCalendar;
 
 public class Grob {
 
-	String sifra;
-	String imePrezime;
-	GregorianCalendar datumRodjenja;
-	GregorianCalendar datumSmrti;
-	String posveta;
-	String biografija;
-	boolean rezervisano;
+	private String sifra;
+	private String imePrezime;
+	private GregorianCalendar datumRodjenja;
+	private GregorianCalendar datumSmrti;
+	private String posveta;
+	private String biografija;
+	private boolean rezervisano;
 
 	public boolean isRezervisano() {
 		return rezervisano;
