@@ -10,6 +10,15 @@ public class Grob {
 	GregorianCalendar datumSmrti;
 	String posveta;
 	String biografija;
+	boolean rezervisano;
+
+	public boolean isRezervisano() {
+		return rezervisano;
+	}
+
+	public void setRezervisano(boolean rezervisano) {
+		this.rezervisano = rezervisano;
+	}
 
 	public String getSifra() {
 		return sifra;
