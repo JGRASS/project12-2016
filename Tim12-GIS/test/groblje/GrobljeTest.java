@@ -116,10 +116,6 @@ public class GrobljeTest {
 	public void testOslobodiRezervacijuNePostjiSifra() {
 		groblje.oslobodiRezervaciju("fakdhf8459752");
 	}
-	@Test
-	public void testOslobodiGrob() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testUnesiUmrlogDobarTest() {
@@ -131,7 +127,7 @@ public class GrobljeTest {
 		g.setPosveta(null);
 		g.setRezervisano(true);
 		g.setSifra("00");
-		groblje.unesiUmrlog("Pera Peric", null, null, new GregorianCalendar(), new GregorianCalendar());
+		groblje.unesiUmrlog( "Pera Peric", null, null, new GregorianCalendar(), new GregorianCalendar());
 		assertEquals(g, groblje.getGrobovi()[0][0]);
 	}
 	
@@ -176,9 +172,9 @@ public class GrobljeTest {
 		g2.setRezervisano(true);
 		g.setSifra("00");
 		g1.setSifra("01");
-		g2.setSifra("03");
+		g2.setSifra("02");
 		pretrazeni.add(g);
-		pretrazeni.add(g1);
+//		pretrazeni.add(g1);
 		pretrazeni.add(g2);
 		groblje.unesiUmrlog("Pera Peric", null, null, new GregorianCalendar(), null);
 		groblje.unesiUmrlog("Jovana Jovic", null, null, new GregorianCalendar(), null);

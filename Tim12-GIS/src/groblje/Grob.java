@@ -14,6 +14,11 @@ public class Grob {
 	 * Sirfa groba kao String
 	 */
 	private String sifra;
+
+	/**
+	 * Ime onog koji je rezervisao grob kao String
+	 */
+	private String rezervisao;
 	/**
 	 * Ime i prezime umrlog kao String
 	 */
@@ -38,6 +43,28 @@ public class Grob {
 	 * Rezervisano kao boolean
 	 */
 	private boolean rezervisano;
+
+	/**
+	 * Metoda vraca vrednost atributa rezervisao
+	 * 
+	 * @return rezervisao
+	 */
+	public String getRezervisao() {
+		return rezervisao;
+	}
+
+	/**
+	 * Metoda postavlja novu vrednost za atribut rezervisao
+	 * 
+	 * @param rezervisao
+	 *            Ime i prezime onog ko je rezervisao mesto
+	 * 
+	 */
+	public void setRezervisao(String rezervisao) {
+		if (rezervisao == null || rezervisao.isEmpty())
+			throw new RuntimeException("Nije uneto ime i prezime onog koji je rezervisao grob!");
+		this.rezervisao = rezervisao;
+	}
 
 	/**
 	 * Metoda vraca vrednost atributa rezervisano
@@ -74,7 +101,8 @@ public class Grob {
 	 *            Nova sifra groba
 	 */
 	public void setSifra(String sifra) {
-		if(sifra == null || sifra.isEmpty() == true) throw new RuntimeException("Nije prosledjena odgovarajuca sifra.");
+		if (sifra == null || sifra.isEmpty() == true)
+			throw new RuntimeException("Nije prosledjena odgovarajuca sifra.");
 		this.sifra = sifra;
 	}
 
@@ -94,7 +122,8 @@ public class Grob {
 	 *            Novo ime i prezime
 	 */
 	public void setImePrezime(String imePrezime) {
-		if((isRezervisano() == true && imePrezime == null) || (isRezervisano() == true && imePrezime.isEmpty() == true)) 
+		if ((isRezervisano() == true && imePrezime == null)
+				|| (isRezervisano() == true && imePrezime.isEmpty() == true))
 			throw new RuntimeException("Morate uneti neko ime i prezime.");
 		this.imePrezime = imePrezime;
 	}
@@ -115,7 +144,8 @@ public class Grob {
 	 *            Datum rodjenja umrlog
 	 */
 	public void setDatumRodjenja(GregorianCalendar datumRodjenja) {
-		if(isRezervisano() == true && datumRodjenja == null) throw new RuntimeException("Morate uneti datum rodjenja.");
+		if (isRezervisano() == true && datumRodjenja == null)
+			throw new RuntimeException("Morate uneti datum rodjenja.");
 		this.datumRodjenja = datumRodjenja;
 	}
 
@@ -233,6 +263,5 @@ public class Grob {
 			return false;
 		return true;
 	}
-	
-	
+
 }
