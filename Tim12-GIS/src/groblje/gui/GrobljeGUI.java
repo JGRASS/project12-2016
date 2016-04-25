@@ -6,13 +6,24 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.KeyStroke;
+
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.ImageIcon;
 
 public class GrobljeGUI extends JFrame {
 
@@ -26,31 +37,32 @@ public class GrobljeGUI extends JFrame {
 	private JButton btnUnesiUmrlog;
 	private JScrollPane scrollPane;
 	private JTable table;
+	private JMenuBar menuBar;
+	private JMenu mnFile;
+	private JMenuItem mntmOpen;
+	private JMenuItem mntmExit;
+	private JMenu mnHelp;
+	private JMenuItem mntmAbout;
+	private JMenuItem mntmRefresh;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GrobljeGUI frame = new GrobljeGUI();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public GrobljeGUI() {
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				GUIKontroler.ugasiAplikaciju();
+			}
+
+		});
+		setResizable(false);
 		setTitle("Groblje IS");
-		setIconImage(Toolkit.getDefaultToolkit().getImage(GrobljeGUI.class.getResource("/icons/cemetery-headstones.jpg")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GrobljeGUI.class.getResource("/icons/black-cross-clipart-19684-black-cross-design.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 683, 402);
+		setBounds(100, 100, 683, 458);
+		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -75,6 +87,10 @@ public class GrobljeGUI extends JFrame {
 	private JButton getBtnProveriSlobodnaMesta() {
 		if (btnProveriSlobodnaMesta == null) {
 			btnProveriSlobodnaMesta = new JButton("Proveri broj slobodnih mesta");
+			btnProveriSlobodnaMesta.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				}
+			});
 			btnProveriSlobodnaMesta.setPreferredSize(new Dimension(200, 50));
 		}
 		return btnProveriSlobodnaMesta;
@@ -140,5 +156,71 @@ public class GrobljeGUI extends JFrame {
 			table.setFillsViewportHeight(true);
 		}
 		return table;
+	}
+	private JMenuBar getMenuBar_1() {
+		if (menuBar == null) {
+			menuBar = new JMenuBar();
+			menuBar.add(getMnFile());
+			menuBar.add(getMnHelp());
+		}
+		return menuBar;
+	}
+	private JMenu getMnFile() {
+		if (mnFile == null) {
+			mnFile = new JMenu("File");
+			mnFile.add(getMntmOpen());
+			mnFile.add(getMntmRefresh());
+			mnFile.add(getMntmExit());
+		}
+		return mnFile;
+	}
+	private JMenuItem getMntmOpen() {
+		if (mntmOpen == null) {
+			mntmOpen = new JMenuItem("Open");
+			mntmOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
+			mntmOpen.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.ucitajIzfajla();
+				}
+			});
+			mntmOpen.setIcon(new ImageIcon(GrobljeGUI.class.getResource("/javax/swing/plaf/metal/icons/ocean/directory.gif")));
+		}
+		return mntmOpen;
+	}
+	private JMenuItem getMntmExit() {
+		if (mntmExit == null) {
+			mntmExit = new JMenuItem("Exit");
+			mntmExit.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.ugasiAplikaciju();
+				}
+			});
+			mntmExit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_MASK));
+			mntmExit.setIcon(new ImageIcon(GrobljeGUI.class.getResource("/com/sun/java/swing/plaf/motif/icons/Error.gif")));
+		}
+		return mntmExit;
+	}
+	private JMenu getMnHelp() {
+		if (mnHelp == null) {
+			mnHelp = new JMenu("Help");
+			mnHelp.add(getMntmAbout());
+		}
+		return mnHelp;
+	}
+	private JMenuItem getMntmAbout() {
+		if (mntmAbout == null) {
+			mntmAbout = new JMenuItem("About");
+			mntmAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
+			mntmAbout.setIcon(new ImageIcon(GrobljeGUI.class.getResource("/javax/swing/plaf/metal/icons/ocean/iconify.gif")));
+		}
+		return mntmAbout;
+	}
+	private JMenuItem getMntmRefresh() {
+		if (mntmRefresh == null) {
+			mntmRefresh = new JMenuItem("Refresh");
+			mntmRefresh.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));
+			mntmRefresh.setIcon(new ImageIcon(GrobljeGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
+		}
+		return mntmRefresh;
 	}
 }
