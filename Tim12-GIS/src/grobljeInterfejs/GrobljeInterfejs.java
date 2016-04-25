@@ -82,4 +82,5 @@ public interface GrobljeInterfejs {
 	 *             ako su sva mesta zauzeta
 	 */
 	public void unesiUmrlog(String imePrezime, String posveta, String biografija, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti);
+	
 }

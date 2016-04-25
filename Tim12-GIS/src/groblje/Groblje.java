@@ -42,7 +42,7 @@ public class Groblje implements GrobljeInterfejs {
 
 	public Groblje() {
 		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi.length; j++) {
+			for (int j = 0; j < grobovi[i].length; j++) {
 				grobovi[i][j] = new Grob();
 				String sifra = ""+i+""+j;
 				grobovi[i][j].setSifra(sifra);
@@ -130,13 +130,15 @@ public class Groblje implements GrobljeInterfejs {
 
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi[i].length; j++) {
-				if (grobovi[i][j].getSifra().equals(sifra)) {
-					if (grobovi[i][j].isRezervisano()) {
-						throw new RuntimeException("Grob " + sifra + " je vec rezervisan!");
-					} else {
-						grobovi[i][j].setRezervisano(true);
-						brojSlobodnih--;
-						izvrseno = true;
+				if(grobovi[i][j].getSifra()!=null){
+					if (grobovi[i][j].getSifra().equals(sifra)) {
+						if (grobovi[i][j].isRezervisano()) {
+							throw new RuntimeException("Grob " + sifra + " je vec rezervisan!");
+						} else {
+							grobovi[i][j].setRezervisano(true);
+							brojSlobodnih--;
+							izvrseno = true;
+						}
 					}
 				}
 			}
@@ -178,11 +180,12 @@ public class Groblje implements GrobljeInterfejs {
 
 
 	@Override
-	public void unesiUmrlog(String imePrezime, String posveta, String biografija, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti) {
+	public void unesiUmrlog(String imePrezime, String posveta, String biografija, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti ) {
 		if(imaLiSlobodnihMesta() == false) throw new RuntimeException("Sva mesta su zauzeta!");
 		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi.length; j++) {
+			for (int j = 0; j < grobovi[i].length; j++) {
 				if (grobovi[i][j].isRezervisano() == false) {
+					
 					grobovi[i][j].setBiografija(biografija);
 					grobovi[i][j].setDatumRodjenja(datumRodjenja);
 					grobovi[i][j].setDatumSmrti(datumSmrti);
@@ -202,10 +205,12 @@ public class Groblje implements GrobljeInterfejs {
 			throw new RuntimeException("Greska!");
 		}
 		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi.length; j++) {
-				if (grobovi[i][j].getSifra().equals(sifra)) {
-					return grobovi[i][j].isRezervisano();
-				}
+			for (int j = 0; j < grobovi[i].length; j++) {
+				
+					if (grobovi[i][j].getSifra().equals(sifra)) {
+						return grobovi[i][j].isRezervisano();
+					}
+				
 			}
 		}
 		throw new RuntimeException("Ne postoji grobno mesto sa unetom sifrom.");
@@ -219,9 +224,11 @@ public class Groblje implements GrobljeInterfejs {
 		}
 		LinkedList<Grob> pretrazeni = new LinkedList<Grob>();
 		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi.length; j++) {
-				if (grobovi[i][j].getImePrezime().equals(imePrezime)) {
-					pretrazeni.add(grobovi[i][j]);
+			for (int j = 0; j < grobovi[i].length; j++) {
+				if(grobovi[i][j].getImePrezime()!=null){
+					if (grobovi[i][j].getImePrezime().equals(imePrezime)) {
+						pretrazeni.add(grobovi[i][j]);
+					}
 				}
 			}
 		}
