@@ -116,10 +116,6 @@ public class GrobljeTest {
 	public void testOslobodiRezervacijuNePostjiSifra() {
 		groblje.oslobodiRezervaciju("fakdhf8459752");
 	}
-	@Test
-	public void testOslobodiGrob() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testUnesiUmrlogDobarTest() {
@@ -143,7 +139,7 @@ public class GrobljeTest {
 	@Test
 	public void testDaLiJeSlobodno() {
 		groblje.rezervisi("00");
-		assertEquals(false, groblje.daLiJeSlobodno("00"));
+		assertEquals(true, groblje.daLiJeSlobodno("00"));
 	}
 	@Test (expected = java.lang.RuntimeException.class)
 	public void testDaLiJeSlobodnoNull() {
