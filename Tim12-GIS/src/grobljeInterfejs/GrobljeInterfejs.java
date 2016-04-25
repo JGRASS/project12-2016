@@ -1,5 +1,6 @@
 package grobljeInterfejs;
 
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 import groblje.Grob;
@@ -84,5 +85,5 @@ public interface GrobljeInterfejs {
 	 * @throws java.lang.RuntimeException
 	 *             ako su sva mesta zauzeta
 	 */
-	public void unesiUmrlog(Grob g);
+	public void unesiUmrlog(String imePrezime, String posveta, String biografija, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti);
 }

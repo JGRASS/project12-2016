@@ -29,7 +29,26 @@ public class Groblje implements GrobljeInterfejs {
 	/**
 	 * Broj slobodnih mesta kao int
 	 */
-	private int brojSlobodnih;
+	private int brojSlobodnih = 20*20;
+	
+
+	public Grob[][] getGrobovi() {
+		return grobovi;
+	}
+
+	public void setGrobovi(Grob[][] grobovi) {
+		this.grobovi = grobovi;
+	}
+
+	public Groblje() {
+		for (int i = 0; i < grobovi.length; i++) {
+			for (int j = 0; j < grobovi.length; j++) {
+				grobovi[i][j] = new Grob();
+				String sifra = ""+i+""+j;
+				grobovi[i][j].setSifra(sifra);
+			}
+		}
+	}
 
 	/**
 	 * Metoda vraca vrednost atributa naziv
@@ -47,6 +66,7 @@ public class Groblje implements GrobljeInterfejs {
 	 *            Novi naziv groblja
 	 */
 	public void setNaziv(String naziv) {
+		if(naziv == null || naziv.isEmpty() == true) throw new RuntimeException("Morate uneti naziv groblja.");
 		this.naziv = naziv;
 	}
 
@@ -66,6 +86,7 @@ public class Groblje implements GrobljeInterfejs {
 	 *            Nova adresa groblja
 	 */
 	public void setAdresa(String adresa) {
+		if(adresa == null || adresa.isEmpty() == true) throw new RuntimeException("Morate uneti adresu groblja.");
 		this.adresa = adresa;
 	}
 
@@ -170,22 +191,29 @@ public class Groblje implements GrobljeInterfejs {
 	}
 
 	@Override
-	public void unesiUmrlog(Grob g) {
+	public void unesiUmrlog(String imePrezime, String posveta, String biografija, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti) {
+		if(imaLiSlobodnihMesta() == false) throw new RuntimeException("Sva mesta su zauzeta!");
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi.length; j++) {
-				if (grobovi[i][j] == null) {
-					grobovi[i][j] = g;
+				if (grobovi[i][j].isRezervisano() == false) {
+					grobovi[i][j].setBiografija(biografija);
+					grobovi[i][j].setDatumRodjenja(datumRodjenja);
+					grobovi[i][j].setDatumSmrti(datumSmrti);
+					grobovi[i][j].setImePrezime(imePrezime);
+					grobovi[i][j].setPosveta(posveta);
+					grobovi[i][j].setRezervisano(true);
 					return;
 				}
 			}
 		}
-		throw new RuntimeException("Sva mesta su zauzeta!");
-
 	}
 
 	@Override
 	public boolean daLiJeSlobodno(String sifra) {
 		// TODO Auto-generated method stub
+		if (sifra == null || sifra.equals("")) {
+			throw new RuntimeException("Greska!");
+		}
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi.length; j++) {
 				if (grobovi[i][j].getSifra().equals(sifra)) {
@@ -199,6 +227,9 @@ public class Groblje implements GrobljeInterfejs {
 	@Override
 
 	public LinkedList<Grob> pretraziMrtve(String imePrezime) {
+		if (imePrezime == null || imePrezime.equals("")) {
+			throw new RuntimeException("Greska!");
+		}
 		LinkedList<Grob> pretrazeni = new LinkedList<Grob>();
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi.length; j++) {
