@@ -183,7 +183,6 @@ public class GrobljeTest {
 		groblje.unesiUmrlog("Pera Peric", null, null, new GregorianCalendar(), null);
 		groblje.unesiUmrlog("Jovana Jovic", null, null, new GregorianCalendar(), null);
 		groblje.unesiUmrlog("Pera Peric", null, null, new GregorianCalendar(), null);
-		
 		assertEquals(pretrazeni, groblje.pretraziMrtve("Pera Peric"));
 	}
 	

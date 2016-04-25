@@ -72,10 +72,6 @@ public interface GrobljeInterfejs {
 	 */
 	public void oslobodiRezervaciju(String sifra);
 
-	/**
-	 * Metoda oslobadja grob ukoliko je tu pokopan umrli pre 100 i vise godina.
-	 */
-	public void oslobodiGrob();
 
 	/**
 	 * Metoda unosi novog umrlog u groblje.

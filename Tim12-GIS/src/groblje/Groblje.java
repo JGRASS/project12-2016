@@ -176,19 +176,6 @@ public class Groblje implements GrobljeInterfejs {
 
 	}
 
-	@Override
-	public void oslobodiGrob() {
-		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi.length; j++) {
-				if (grobovi[i][j] != null && grobovi[i][j].getDatumSmrti() != null) {
-					if (new GregorianCalendar().YEAR - grobovi[i][j].getDatumSmrti().YEAR > 99) {
-						grobovi[i][j] = null;
-					}
-				}
-			}
-		}
-
-	}
 
 	@Override
 	public void unesiUmrlog(String imePrezime, String posveta, String biografija, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti) {
