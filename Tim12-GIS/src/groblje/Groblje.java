@@ -25,12 +25,11 @@ public class Groblje implements GrobljeInterfejs {
 	/**
 	 * Grobna mesta kao matrica klase Grob
 	 */
-	private Grob[][] grobovi = new Grob[20][20];
+	private  Grob[][] grobovi = new Grob[20][20];
 	/**
 	 * Broj slobodnih mesta kao int
 	 */
-	private int brojSlobodnih = 20*20;
-	
+	private int brojSlobodnih = 20 * 20;
 
 	public Grob[][] getGrobovi() {
 		return grobovi;
@@ -44,7 +43,7 @@ public class Groblje implements GrobljeInterfejs {
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi[i].length; j++) {
 				grobovi[i][j] = new Grob();
-				String sifra = ""+i+""+j;
+				String sifra = "" + i + "" + j;
 				grobovi[i][j].setSifra(sifra);
 			}
 		}
@@ -66,7 +65,8 @@ public class Groblje implements GrobljeInterfejs {
 	 *            Novi naziv groblja
 	 */
 	public void setNaziv(String naziv) {
-		if(naziv == null || naziv.isEmpty() == true) throw new RuntimeException("Morate uneti naziv groblja.");
+		if (naziv == null || naziv.isEmpty() == true)
+			throw new RuntimeException("Morate uneti naziv groblja.");
 		this.naziv = naziv;
 	}
 
@@ -86,7 +86,8 @@ public class Groblje implements GrobljeInterfejs {
 	 *            Nova adresa groblja
 	 */
 	public void setAdresa(String adresa) {
-		if(adresa == null || adresa.isEmpty() == true) throw new RuntimeException("Morate uneti adresu groblja.");
+		if (adresa == null || adresa.isEmpty() == true)
+			throw new RuntimeException("Morate uneti adresu groblja.");
 		this.adresa = adresa;
 	}
 
@@ -130,7 +131,7 @@ public class Groblje implements GrobljeInterfejs {
 
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi[i].length; j++) {
-				if(grobovi[i][j].getSifra()!=null){
+				if (grobovi[i][j].getSifra() != null) {
 					if (grobovi[i][j].getSifra().equals(sifra)) {
 						if (grobovi[i][j].isRezervisano()) {
 							throw new RuntimeException("Grob " + sifra + " je vec rezervisan!");
@@ -178,14 +179,15 @@ public class Groblje implements GrobljeInterfejs {
 
 	}
 
-
 	@Override
-	public void unesiUmrlog(String imePrezime, String posveta, String biografija, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti ) {
-		if(imaLiSlobodnihMesta() == false) throw new RuntimeException("Sva mesta su zauzeta!");
+	public void unesiUmrlog(String imePrezime, String posveta, String biografija, GregorianCalendar datumRodjenja,
+			GregorianCalendar datumSmrti) {
+		if (imaLiSlobodnihMesta() == false)
+			throw new RuntimeException("Sva mesta su zauzeta!");
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi[i].length; j++) {
 				if (grobovi[i][j].isRezervisano() == false) {
-					
+
 					grobovi[i][j].setBiografija(biografija);
 					grobovi[i][j].setDatumRodjenja(datumRodjenja);
 					grobovi[i][j].setDatumSmrti(datumSmrti);
@@ -206,11 +208,11 @@ public class Groblje implements GrobljeInterfejs {
 		}
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi[i].length; j++) {
-				
-					if (grobovi[i][j].getSifra().equals(sifra)) {
-						return grobovi[i][j].isRezervisano();
-					}
-				
+
+				if (grobovi[i][j].getSifra().equals(sifra)) {
+					return grobovi[i][j].isRezervisano();
+				}
+
 			}
 		}
 		throw new RuntimeException("Ne postoji grobno mesto sa unetom sifrom.");
@@ -225,7 +227,7 @@ public class Groblje implements GrobljeInterfejs {
 		LinkedList<Grob> pretrazeni = new LinkedList<Grob>();
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi[i].length; j++) {
-				if(grobovi[i][j].getImePrezime()!=null){
+				if (grobovi[i][j].getImePrezime() != null) {
 					if (grobovi[i][j].getImePrezime().equals(imePrezime)) {
 						pretrazeni.add(grobovi[i][j]);
 					}
@@ -235,5 +237,16 @@ public class Groblje implements GrobljeInterfejs {
 		return pretrazeni;
 
 	}
+
+//	public LinkedList<Grob> vratiGrobove() {
+//		LinkedList<Grob> lista = new LinkedList<Grob>();
+//		for (int i = 0; i < grobovi.length; i++) {
+//			for (int j = 0; j < grobovi[i].length; j++) {
+//				lista.add(grobovi[i][j]);
+//			}
+//
+//		}
+//		return lista;
+//	}
 
 }

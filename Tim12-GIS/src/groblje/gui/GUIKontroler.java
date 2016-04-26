@@ -4,16 +4,19 @@ import java.awt.EventQueue;
 import java.awt.TextArea;
 import java.io.File;
 import java.sql.Savepoint;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import groblje.Grob;
 import groblje.Groblje;
-import grobljeInterfejs.GrobljeInterfejs;
+
 
 public class GUIKontroler {
 	private static GrobljeGUI grobljeGui;
-	private static GrobljeInterfejs groblje;
+	private static Groblje groblje;
 	/**
 	 * Launch the application.
 	 */
@@ -94,6 +97,10 @@ public class GUIKontroler {
 		AboutProzor prozor = new AboutProzor();
 		prozor.setVisible(true);
 		prozor.setLocationRelativeTo(null);
+	}
+	
+	public static Grob[][] vratiSveGrobove(){
+		return groblje.getGrobovi();
 	}
 } 
 
