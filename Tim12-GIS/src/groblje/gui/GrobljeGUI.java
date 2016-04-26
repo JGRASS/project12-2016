@@ -89,6 +89,7 @@ public class GrobljeGUI extends JFrame {
 			btnProveriSlobodnaMesta = new JButton("Proveri broj slobodnih mesta");
 			btnProveriSlobodnaMesta.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.proveriSlobodnaMesta();
 				}
 			});
 			btnProveriSlobodnaMesta.setPreferredSize(new Dimension(200, 50));
@@ -100,6 +101,7 @@ public class GrobljeGUI extends JFrame {
 			btnProveriOdredjenoMesto = new JButton("Proveri odre\u0111eno mesto");
 			btnProveriOdredjenoMesto.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.pokreniProveriMestoProzor();
 				}
 			});
 			btnProveriOdredjenoMesto.setPreferredSize(new Dimension(200, 50));
@@ -120,6 +122,11 @@ public class GrobljeGUI extends JFrame {
 	private JButton getBtnRezervisiMesto() {
 		if (btnRezervisiMesto == null) {
 			btnRezervisiMesto = new JButton("Rezervi\u0161i mesto");
+			btnRezervisiMesto.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.pokreniRezervisiMestoProzor();
+				}
+			});
 			btnRezervisiMesto.setPreferredSize(new Dimension(200, 50));
 		}
 		return btnRezervisiMesto;
@@ -127,6 +134,11 @@ public class GrobljeGUI extends JFrame {
 	private JButton getBtnOslobodiRezervaciju() {
 		if (btnOslobodiRezervaciju == null) {
 			btnOslobodiRezervaciju = new JButton("Oslobodi rezervaciju");
+			btnOslobodiRezervaciju.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.pokreniOslobodiMestoProzor();
+				}
+			});
 			btnOslobodiRezervaciju.setPreferredSize(new Dimension(200, 50));
 		}
 		return btnOslobodiRezervaciju;

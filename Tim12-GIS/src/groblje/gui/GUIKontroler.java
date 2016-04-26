@@ -1,6 +1,7 @@
 package groblje.gui;
 
 import java.awt.EventQueue;
+import java.awt.TextArea;
 import java.io.File;
 import java.sql.Savepoint;
 
@@ -52,4 +53,41 @@ public class GUIKontroler {
 		}
 
 	}
-}
+	
+	public static void proveriSlobodnaMesta(){
+		if(groblje.imaLiSlobodnihMesta())
+			JOptionPane.showInternalMessageDialog(grobljeGui.getContentPane(), "Na groblju trenutno ima slobodnih mesta!", "Poruka",JOptionPane.OK_CANCEL_OPTION);
+		else 
+			JOptionPane.showInternalMessageDialog(grobljeGui.getContentPane(), "Na groblju trenutno nema slobodnih mesta!", "Poruka",JOptionPane.OK_CANCEL_OPTION);
+	}
+	
+	public static boolean proveriOdredjenoMesto(String sifra){
+		return groblje.daLiJeSlobodno(sifra);
+	}
+	
+	public static void rezervisiMesto(String sifra){
+		groblje.rezervisi(sifra);
+	}
+	public static void pokreniRezervisiMestoProzor(){
+		RezervisiMestoProzor prozor = new RezervisiMestoProzor();
+		prozor.setVisible(true);
+		prozor.setLocationRelativeTo(null);
+	}
+	
+	public static void pokreniProveriMestoProzor(){
+		ProveriMestoGUI prozor = new ProveriMestoGUI();
+		prozor.setVisible(true);
+		prozor.setLocationRelativeTo(null);
+	}
+	
+	public static void oslobodi(String sifra){
+		groblje.oslobodiRezervaciju(sifra);
+	}
+	
+	public static void pokreniOslobodiMestoProzor(){
+		OslobodiMestoProzor prozor = new OslobodiMestoProzor();
+		prozor.setVisible(true);
+		prozor.setLocationRelativeTo(null);
+	}
+} 
+
