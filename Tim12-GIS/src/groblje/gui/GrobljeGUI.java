@@ -250,6 +250,7 @@ public class GrobljeGUI extends JFrame {
 	}
 	
 	public void osveziTabelu() {
+
 		GrobTableModel model = (GrobTableModel) table.getModel();
 		model.staviGroboveUModel(GUIKontroler.vratiSveGrobove());
 	}

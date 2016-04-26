@@ -253,5 +253,4 @@ public class Groblje implements GrobljeInterfejs {
 		}
 		return lista;
 	}
-
 }
