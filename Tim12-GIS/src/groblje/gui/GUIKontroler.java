@@ -3,6 +3,10 @@ package groblje.gui;
 import java.awt.EventQueue;
 import java.awt.TextArea;
 import java.io.File;
+import java.sql.Savepoint;
+import java.util.GregorianCalendar;
+
+import java.io.File;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
@@ -71,6 +75,8 @@ public class GUIKontroler {
 	
 	public static void rezervisiMesto(String sifra, String rezervisao){
 		groblje.rezervisi(sifra, rezervisao);
+		grobljeGui.osveziTabelu();
+
 	}
 	public static void pokreniRezervisiMestoProzor(){
 		RezervisiMestoProzor prozor = new RezervisiMestoProzor();
@@ -86,6 +92,7 @@ public class GUIKontroler {
 	
 	public static void oslobodi(String sifra){
 		groblje.oslobodiRezervaciju(sifra);
+		grobljeGui.osveziTabelu();
 	}
 	
 	public static void pokreniOslobodiMestoProzor(){
@@ -111,8 +118,8 @@ public class GUIKontroler {
 		grobljeGui.osveziTabelu();
 	}
 	
-	public static Grob[][] vratiSveGrobove(){
-		return groblje.getGrobovi();
+	public static LinkedList<Grob> vratiSveGrobove(){
+		return groblje.vratiGrobove();
 	}
 
 } 
