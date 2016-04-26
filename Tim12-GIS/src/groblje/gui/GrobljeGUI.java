@@ -116,6 +116,7 @@ public class GrobljeGUI extends JFrame {
 			btnPretraziMrtve = new JButton("Pretra\u017Ei mrtve po imenu");
 			btnPretraziMrtve.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.pokreniPretraziMrtveProzor();
 				}
 			});
 			btnPretraziMrtve.setPreferredSize(new Dimension(200, 50));

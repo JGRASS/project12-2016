@@ -121,6 +121,16 @@ public class GUIKontroler {
 	public static LinkedList<Grob> vratiSveGrobove(){
 		return groblje.vratiGrobove();
 	}
+	
+	public static void pokreniPretraziMrtveProzor() {
+		PretraziMrtvePoImenu prozor = new PretraziMrtvePoImenu();
+		prozor.setVisible(true);
+		prozor.setLocationRelativeTo(null);
+	}
+	
+	public static LinkedList<Grob> pretraziMrtvePoImenu (String imePrezime) {
+		return groblje.pretraziMrtve(imePrezime);
+	}
 
 } 
 
