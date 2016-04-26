@@ -24,6 +24,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 public class GrobljeGUI extends JFrame {
 
@@ -61,7 +62,7 @@ public class GrobljeGUI extends JFrame {
 		setTitle("Groblje IS");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GrobljeGUI.class.getResource("/icons/black-cross-clipart-19684-black-cross-design.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 683, 458);
+		setBounds(100, 100, 794, 470);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -164,8 +165,25 @@ public class GrobljeGUI extends JFrame {
 	private JTable getTable() {
 		if (table == null) {
 			table = new JTable();
-			table.setPreferredSize(new Dimension(150, 10));
 			table.setFillsViewportHeight(true);
+			table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+			table.setAutoCreateRowSorter(true);
+			table.setModel(new DefaultTableModel(
+				new Object[][] {
+				},
+				new String[] {
+					"Šifra", "Ime i prezime", "Datum rodjenja", "Datum smrti", "Rezervisano?", "Rezervisao"
+				}
+			) {
+				boolean[] columnEditables = new boolean[] {
+					false, true, true, true, true, true, true, true
+				};
+				public boolean isCellEditable(int row, int column) {
+					return columnEditables[column];
+				}
+			});
+			table.getColumnModel().getColumn(0).setResizable(false);
+			table.setPreferredSize(new Dimension(150, 10));
 		}
 		return table;
 	}
