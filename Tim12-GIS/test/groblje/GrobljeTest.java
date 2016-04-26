@@ -120,21 +120,20 @@ public class GrobljeTest {
 	@Test
 	public void testUnesiUmrlogDobarTest() {
 		Grob g = new Grob();
-		g.setBiografija(null);
 		g.setDatumRodjenja(new GregorianCalendar());
 		g.setDatumSmrti(new GregorianCalendar());
 		g.setImePrezime("Pera Peric");
 		g.setPosveta(null);
 		g.setRezervisano(true);
 		g.setSifra("00");
-		groblje.unesiUmrlog( "Pera Peric", null, null, new GregorianCalendar(), new GregorianCalendar());
+		groblje.unesiUmrlog( "Pera Peric", null, new GregorianCalendar(), new GregorianCalendar());
 		assertEquals(g, groblje.getGrobovi()[0][0]);
 	}
 	
 	@Test (expected = java.lang.RuntimeException.class)
 	public void testUnesiUmrlog() {
 		groblje.setBrojSlobodnih(0);
-		groblje.unesiUmrlog("Pera Peric", null, null, null, null);
+		groblje.unesiUmrlog("Pera Peric", null, null, null);
 	}
 	@Test
 	public void testDaLiJeSlobodno() {
@@ -176,9 +175,9 @@ public class GrobljeTest {
 		pretrazeni.add(g);
 //		pretrazeni.add(g1);
 		pretrazeni.add(g2);
-		groblje.unesiUmrlog("Pera Peric", null, null, new GregorianCalendar(), null);
-		groblje.unesiUmrlog("Jovana Jovic", null, null, new GregorianCalendar(), null);
-		groblje.unesiUmrlog("Pera Peric", null, null, new GregorianCalendar(), null);
+		groblje.unesiUmrlog("Pera Peric", null, new GregorianCalendar(), null);
+		groblje.unesiUmrlog("Jovana Jovic", null, new GregorianCalendar(), null);
+		groblje.unesiUmrlog("Pera Peric", null, new GregorianCalendar(), null);
 		assertEquals(pretrazeni, groblje.pretraziMrtve("Pera Peric"));
 	}
 	
