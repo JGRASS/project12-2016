@@ -75,6 +75,8 @@ public class GUIKontroler {
 	
 	public static void rezervisiMesto(String sifra, String rezervisao){
 		groblje.rezervisi(sifra, rezervisao);
+		grobljeGui.osveziTabelu();
+
 	}
 	public static void pokreniRezervisiMestoProzor(){
 		RezervisiMestoProzor prozor = new RezervisiMestoProzor();
@@ -90,6 +92,7 @@ public class GUIKontroler {
 	
 	public static void oslobodi(String sifra){
 		groblje.oslobodiRezervaciju(sifra);
+		grobljeGui.osveziTabelu();
 	}
 	
 	public static void pokreniOslobodiMestoProzor(){
@@ -112,6 +115,7 @@ public class GUIKontroler {
 	
 	public static void unesiUmrlog(String imePrezime,String posveta, String rezervisao, GregorianCalendar datumRodjenja,GregorianCalendar datumSmrti) {
 		groblje.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);
+		grobljeGui.osveziTabelu();
 	}
 	
 	public static LinkedList<Grob> vratiSveGrobove(){
