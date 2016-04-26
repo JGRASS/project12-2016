@@ -182,13 +182,12 @@ public class Groblje implements GrobljeInterfejs {
 
 
 	@Override
-	public void unesiUmrlog(String imePrezime, String posveta, String biografija, String rezervisao, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti ) {
+	public void unesiUmrlog(String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti ) {
 		if(imaLiSlobodnihMesta() == false) throw new RuntimeException("Sva mesta su zauzeta!");
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi[i].length; j++) {
 				if (grobovi[i][j].isRezervisano() == false) {
 					grobovi[i][j].setRezervisao(rezervisao);
-					grobovi[i][j].setBiografija(biografija);
 					grobovi[i][j].setDatumRodjenja(datumRodjenja);
 					grobovi[i][j].setDatumSmrti(datumSmrti);
 					grobovi[i][j].setImePrezime(imePrezime);

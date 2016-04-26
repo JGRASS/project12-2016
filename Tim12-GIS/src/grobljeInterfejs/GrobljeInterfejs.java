@@ -81,6 +81,6 @@ public interface GrobljeInterfejs {
 	 * @throws java.lang.RuntimeException
 	 *             ako su sva mesta zauzeta
 	 */
-	public void unesiUmrlog(String imePrezime, String posveta, String biografija, String rezervisao, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti);
+	public void unesiUmrlog(String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti);
 	
 }

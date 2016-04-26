@@ -36,10 +36,6 @@ public class Grob {
 	 */
 	private String posveta;
 	/**
-	 * Biografija umrlog kao String
-	 */
-	private String biografija;
-	/**
 	 * Rezervisano kao boolean
 	 */
 	private boolean rezervisano;
@@ -189,30 +185,12 @@ public class Grob {
 		this.posveta = posveta;
 	}
 
-	/**
-	 * Metoda vraca vrednost atributa biografija
-	 * 
-	 * @return biografija umrlog
-	 */
-	public String getBiografija() {
-		return biografija;
-	}
-
-	/**
-	 * Metoda postavlja novu vrednost za atribut biografija
-	 * 
-	 * @param biografija
-	 *            Biografija umrlog
-	 */
-	public void setBiografija(String biografija) {
-		this.biografija = biografija;
-	}
+	
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((biografija == null) ? 0 : biografija.hashCode());
 		result = prime * result + ((datumRodjenja == null) ? 0 : datumRodjenja.hashCode());
 		result = prime * result + ((datumSmrti == null) ? 0 : datumSmrti.hashCode());
 		result = prime * result + ((imePrezime == null) ? 0 : imePrezime.hashCode());
@@ -231,11 +209,6 @@ public class Grob {
 		if (getClass() != obj.getClass())
 			return false;
 		Grob other = (Grob) obj;
-		if (biografija == null) {
-			if (other.biografija != null)
-				return false;
-		} else if (!biografija.equals(other.biografija))
-			return false;
 		if (datumRodjenja == null) {
 			if (other.datumRodjenja != null)
 				return false;
