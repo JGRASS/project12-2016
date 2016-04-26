@@ -1,7 +1,6 @@
 package groblje.gui.models;
 
 import java.util.LinkedList;
-import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
@@ -18,8 +17,7 @@ public class GrobTableModel extends AbstractTableModel {
 	
 	public void staviGroboveUModel(LinkedList<Grob> grobovi){
 		this.grobovi = grobovi;
-		fireTableCellUpdated(getRowCount(), getColumnCount());
-//		fireTableDataChanged();
+		fireTableDataChanged();
 	}
 	
 	public Grob vratiGrob(int index){

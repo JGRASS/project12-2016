@@ -122,7 +122,8 @@ public class UnesiUmrlogProzor extends JFrame {
 					GregorianCalendar datumSmrti =  (GregorianCalendar) spinnerSmrt.getValue();
 					
 					GUIKontroler.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);
-				}
+			
+					}
 			});
 		}
 		return btnUnesiUmrlog;
