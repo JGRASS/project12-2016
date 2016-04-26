@@ -25,6 +25,8 @@ public class RezervisiMestoProzor extends JFrame {
 	private JTextField txtRezervisi;
 	private JButton btnRezervii;
 	private JTextArea textArea;
+	private JTextField textRezervisao;
+	private JLabel lblRezervisao;
 
 	/**
 	 * Create the frame.
@@ -33,20 +35,22 @@ public class RezervisiMestoProzor extends JFrame {
 		setResizable(false);
 		setTitle("Rezervi\u0161i mesto");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 270, 262);
+		setBounds(100, 100, 537, 212);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(4, 1, 5, 5));
 		contentPane.add(getLblUnesiteifruMesta());
 		contentPane.add(getTxtRezervisi());
+		contentPane.add(getLblRezervisao());
+		contentPane.add(getTextRezervisao());
 		contentPane.add(getBtnRezervii());
 		contentPane.add(getTextArea());
 	}
 
 	private JLabel getLblUnesiteifruMesta() {
 		if (lblUnesiteifruMesta == null) {
-			lblUnesiteifruMesta = new JLabel("Unesite \u0161ifru mesta koji \u017Eelite da rezervi\u0161ete");
+			lblUnesiteifruMesta = new JLabel("Unesite \u0161ifru mesta koji \u017Eelite da rezervi\u0161ete:");
 		}
 		return lblUnesiteifruMesta;
 	}
@@ -63,10 +67,12 @@ public class RezervisiMestoProzor extends JFrame {
 	private JButton getBtnRezervii() {
 		if (btnRezervii == null) {
 			btnRezervii = new JButton("Rezervi\u0161i");
+			btnRezervii.setPreferredSize(new Dimension(25, 25));
 			btnRezervii.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					String sifra = txtRezervisi.getText();
-					GUIKontroler.rezervisiMesto(sifra);
+					String rezervisao = getTextRezervisao().getText();
+					GUIKontroler.rezervisiMesto(sifra, rezervisao);
 					if (GUIKontroler.proveriOdredjenoMesto(sifra))
 						textArea.setText("Uspesno ste rezervisali mesto " + sifra);
 					else
@@ -84,5 +90,18 @@ public class RezervisiMestoProzor extends JFrame {
 					TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
 		}
 		return textArea;
+	}
+	private JTextField getTextRezervisao() {
+		if (textRezervisao == null) {
+			textRezervisao = new JTextField();
+			textRezervisao.setColumns(10);
+		}
+		return textRezervisao;
+	}
+	private JLabel getLblRezervisao() {
+		if (lblRezervisao == null) {
+			lblRezervisao = new JLabel("Rezervisao:");
+		}
+		return lblRezervisao;
 	}
 }

@@ -118,8 +118,8 @@ public class Groblje implements GrobljeInterfejs {
 	}
 
 	@Override
-	public void rezervisi(String sifra) {
-		if (sifra == null || sifra.equals("")) {
+	public void rezervisi(String sifra, String rezervisao) {
+		if (sifra == null || sifra.equals("") || rezervisao == null || rezervisao.isEmpty() == true) {
 			throw new RuntimeException("Greska!");
 		}
 
@@ -137,6 +137,7 @@ public class Groblje implements GrobljeInterfejs {
 							throw new RuntimeException("Grob " + sifra + " je vec rezervisan!");
 						} else {
 							grobovi[i][j].setRezervisano(true);
+							grobovi[i][j].setRezervisao(rezervisao);
 							brojSlobodnih--;
 							izvrseno = true;
 						}
@@ -164,6 +165,7 @@ public class Groblje implements GrobljeInterfejs {
 				if (grobovi[i][j].getSifra().equals(sifra)) {
 					if (grobovi[i][j].isRezervisano()) {
 						grobovi[i][j].setRezervisano(false);
+						grobovi[i][j].setRezervisao(null);
 						brojSlobodnih++;
 						izvrseno = true;
 					} else {
@@ -180,15 +182,17 @@ public class Groblje implements GrobljeInterfejs {
 	}
 
 	@Override
-	public void unesiUmrlog(String imePrezime, String posveta, String biografija, GregorianCalendar datumRodjenja,
+
+	public void unesiUmrlog(String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja,
 			GregorianCalendar datumSmrti) {
 		if (imaLiSlobodnihMesta() == false)
 			throw new RuntimeException("Sva mesta su zauzeta!");
+
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi[i].length; j++) {
 				if (grobovi[i][j].isRezervisano() == false) {
 
-					grobovi[i][j].setBiografija(biografija);
+					grobovi[i][j].setRezervisao(rezervisao);
 					grobovi[i][j].setDatumRodjenja(datumRodjenja);
 					grobovi[i][j].setDatumSmrti(datumSmrti);
 					grobovi[i][j].setImePrezime(imePrezime);

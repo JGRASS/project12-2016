@@ -68,8 +68,8 @@ public class GUIKontroler {
 		return groblje.daLiJeSlobodno(sifra);
 	}
 	
-	public static void rezervisiMesto(String sifra){
-		groblje.rezervisi(sifra);
+	public static void rezervisiMesto(String sifra, String rezervisao){
+		groblje.rezervisi(sifra, rezervisao);
 	}
 	public static void pokreniRezervisiMestoProzor(){
 		RezervisiMestoProzor prozor = new RezervisiMestoProzor();
