@@ -111,6 +111,7 @@ public class UnesiUmrlogProzor extends JFrame {
 			btnUnesiUmrlog.setBounds(5, 266, 151, 37);
 			btnUnesiUmrlog.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
+				
 					String imePrezime = textImePrezime.getText();
 					String posveta = textPosveta.getText();
 					String rezervisao = textRezervisao.getText();
