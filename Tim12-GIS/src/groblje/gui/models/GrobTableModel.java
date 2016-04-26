@@ -17,7 +17,8 @@ public class GrobTableModel extends AbstractTableModel {
 	
 	public void staviGroboveUModel(Grob[][] grobovi){
 		this.grobovi = grobovi;
-		fireTableDataChanged();
+		fireTableCellUpdated(getRowCount(), getColumnCount());
+//		fireTableDataChanged();
 	}
 	
 	public Grob vratiGrob(int index1, int index2){

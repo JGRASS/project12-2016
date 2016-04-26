@@ -118,11 +118,10 @@ public class UnesiUmrlogProzor extends JFrame {
 					String imePrezime = textImePrezime.getText();
 					String posveta = textPosveta.getText();
 					String rezervisao = textRezervisao.getText();
-					try{GregorianCalendar datumRodjenja = (GregorianCalendar) spinnerRodjenje.getValue();
+					GregorianCalendar datumRodjenja = (GregorianCalendar) spinnerRodjenje.getValue();
 					GregorianCalendar datumSmrti =  (GregorianCalendar) spinnerSmrt.getValue();
 					
-					GUIKontroler.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);}
-					catch(RuntimeException r){};
+					GUIKontroler.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);
 				}
 			});
 		}
