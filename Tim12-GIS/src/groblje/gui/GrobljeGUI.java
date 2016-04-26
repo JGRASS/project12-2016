@@ -240,6 +240,11 @@ public class GrobljeGUI extends JFrame {
 	private JMenuItem getMntmAbout() {
 		if (mntmAbout == null) {
 			mntmAbout = new JMenuItem("About");
+			mntmAbout.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.pokreniAboutProzor();
+				}
+			});
 			mntmAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
 			mntmAbout.setIcon(new ImageIcon(GrobljeGUI.class.getResource("/javax/swing/plaf/metal/icons/ocean/iconify.gif")));
 		}

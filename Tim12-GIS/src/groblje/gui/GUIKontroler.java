@@ -89,5 +89,11 @@ public class GUIKontroler {
 		prozor.setVisible(true);
 		prozor.setLocationRelativeTo(null);
 	}
+
+	public static void pokreniAboutProzor() {
+		AboutProzor prozor = new AboutProzor();
+		prozor.setVisible(true);
+		prozor.setLocationRelativeTo(null);
+	}
 } 
 
