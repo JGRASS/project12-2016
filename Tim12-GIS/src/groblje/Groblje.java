@@ -25,7 +25,7 @@ public class Groblje implements GrobljeInterfejs {
 	/**
 	 * Grobna mesta kao matrica klase Grob
 	 */
-	private  Grob[][] grobovi = new Grob[20][20];
+	private  static Grob[][] grobovi = new Grob[20][20];
 	/**
 	 * Broj slobodnih mesta kao int
 	 */
@@ -242,5 +242,15 @@ public class Groblje implements GrobljeInterfejs {
 
 	}
 
+	public static LinkedList<Grob> vratiGrobove() {
+		
+		LinkedList<Grob> lista = new LinkedList<Grob>();
+		for (int i = 0; i < grobovi.length; i++) {
+			for (int j = 0; j < grobovi[i].length; j++) {
+				lista.add(grobovi[i][j]);
+			}
 
+		}
+		return lista;
+	}
 }

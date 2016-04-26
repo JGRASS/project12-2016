@@ -249,7 +249,8 @@ public class GrobljeGUI extends JFrame {
 		return mntmRefresh;
 	}
 	
-	public void osveziTabelu(){
+	public void osveziTabelu() {
+
 		GrobTableModel model = (GrobTableModel) table.getModel();
 		model.staviGroboveUModel(GUIKontroler.vratiSveGrobove());
 	}
