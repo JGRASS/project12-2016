@@ -151,6 +151,7 @@ public class GrobljeGUI extends JFrame {
 			btnUnesiUmrlog = new JButton("Unesi umrlog");
 			btnUnesiUmrlog.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					GUIKontroler.pokreniUnesiUmrlogProzor();
 				}
 			});
 			btnUnesiUmrlog.setPreferredSize(new Dimension(200, 50));
