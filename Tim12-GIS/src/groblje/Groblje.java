@@ -242,7 +242,7 @@ public class Groblje implements GrobljeInterfejs {
 
 	}
 
-	public static LinkedList<Grob> vratiGrobove() {
+	public LinkedList<Grob> vratiGrobove() {
 		
 		LinkedList<Grob> lista = new LinkedList<Grob>();
 		for (int i = 0; i < grobovi.length; i++) {

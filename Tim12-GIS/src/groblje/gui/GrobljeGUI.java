@@ -1,7 +1,6 @@
 package groblje.gui;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -24,7 +23,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
-import javax.swing.table.DefaultTableModel;
 
 import groblje.gui.models.GrobTableModel;
 
@@ -170,8 +168,6 @@ public class GrobljeGUI extends JFrame {
 		if (table == null) {
 			table = new JTable();
 			table.setFillsViewportHeight(true);
-			table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-			table.setAutoCreateRowSorter(true);
 			table.setModel(new GrobTableModel(GUIKontroler.vratiSveGrobove()));
 			table.getColumnModel().getColumn(0).setResizable(false);
 			table.setPreferredSize(new Dimension(150, 10));
