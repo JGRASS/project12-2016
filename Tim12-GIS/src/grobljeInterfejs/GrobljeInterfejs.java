@@ -53,7 +53,7 @@ public interface GrobljeInterfejs {
 	 *             ako je grob sa unetom sifrom vec rezervisan
 	 * 
 	 */
-	public void rezervisi(String sifra);
+	public void rezervisi(String sifra, String rezervisao);
 
 	/**
 	 * Metoda oslobadja rezervaciju rezervisanog groba
@@ -81,6 +81,6 @@ public interface GrobljeInterfejs {
 	 * @throws java.lang.RuntimeException
 	 *             ako su sva mesta zauzeta
 	 */
-	public void unesiUmrlog(String imePrezime, String posveta, String biografija, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti);
+	public void unesiUmrlog(String imePrezime, String posveta, String biografija, String rezervisao, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti);
 	
 }

@@ -49,6 +49,7 @@ public class Grob {
 	 * 
 	 * @return rezervisao
 	 */
+	
 	public String getRezervisao() {
 		return rezervisao;
 	}
@@ -61,8 +62,9 @@ public class Grob {
 	 * 
 	 */
 	public void setRezervisao(String rezervisao) {
+		if(isRezervisano() == true) {
 		if (rezervisao == null || rezervisao.isEmpty())
-			throw new RuntimeException("Nije uneto ime i prezime onog koji je rezervisao grob!");
+			throw new RuntimeException("Nije uneto ime i prezime onog koji je rezervisao grob!");}
 		this.rezervisao = rezervisao;
 	}
 
@@ -263,5 +265,7 @@ public class Grob {
 			return false;
 		return true;
 	}
+	
+	
 
 }
