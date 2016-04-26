@@ -23,6 +23,7 @@ public class AboutProzor extends JFrame {
 	 * Create the frame.
 	 */
 	public AboutProzor() {
+		setResizable(false);
 		setTitle("Pomo\u0107");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(AboutProzor.class.getResource("/javax/swing/plaf/metal/icons/Question.gif")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -44,6 +45,7 @@ public class AboutProzor extends JFrame {
 	private JEditorPane getDtrpnInformacioniSistemGroblja() {
 		if (dtrpnInformacioniSistemGroblja == null) {
 			dtrpnInformacioniSistemGroblja = new JEditorPane();
+			dtrpnInformacioniSistemGroblja.setEditable(false);
 			dtrpnInformacioniSistemGroblja.setContentType("text/plane");
 			dtrpnInformacioniSistemGroblja.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			dtrpnInformacioniSistemGroblja.setBackground(Color.LIGHT_GRAY);

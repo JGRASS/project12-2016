@@ -72,11 +72,13 @@ public class RezervisiMestoProzor extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					String sifra = txtRezervisi.getText();
 					String rezervisao = getTextRezervisao().getText();
-					GUIKontroler.rezervisiMesto(sifra, rezervisao);
+					try{GUIKontroler.rezervisiMesto(sifra, rezervisao);
 					if (GUIKontroler.proveriOdredjenoMesto(sifra))
 						textArea.setText("Uspesno ste rezervisali mesto " + sifra);
 					else
-						textArea.setText("Neuspela rezervacija!");
+						textArea.setText("Neuspela rezervacija!");} catch(RuntimeException r){
+							textArea.setText(r.getMessage());
+						};
 				}
 			});
 		}
@@ -86,6 +88,7 @@ public class RezervisiMestoProzor extends JFrame {
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setEditable(false);
 			textArea.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0), 2, true), "STATUS",
 					TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
 		}
