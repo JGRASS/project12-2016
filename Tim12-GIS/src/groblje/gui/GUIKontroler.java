@@ -3,13 +3,10 @@ package groblje.gui;
 import java.awt.EventQueue;
 import java.awt.TextArea;
 import java.io.File;
-import java.sql.Savepoint;
-<<<<<<< HEAD
 import java.util.GregorianCalendar;
-=======
 import java.util.LinkedList;
 import java.util.List;
->>>>>>> branch 'master' of https://github.com/JGRASS/project12-2016.git
+
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -116,6 +113,6 @@ public class GUIKontroler {
 	public static Grob[][] vratiSveGrobove(){
 		return groblje.getGrobovi();
 	}
->>>>>>> branch 'master' of https://github.com/JGRASS/project12-2016.git
+
 } 
 
