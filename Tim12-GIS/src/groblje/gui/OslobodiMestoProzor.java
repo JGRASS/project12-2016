@@ -79,6 +79,7 @@ public class OslobodiMestoProzor extends JFrame {
 	private JTextArea getTextArea() {
 		if (textArea == null) {
 			textArea = new JTextArea();
+			textArea.setEditable(false);
 			textArea.setBorder(new TitledBorder(new LineBorder(new Color(0, 0, 0), 2, true), "STATUS", TitledBorder.LEADING, TitledBorder.TOP, null, Color.BLACK));
 		}
 		return textArea;
