@@ -108,6 +108,7 @@ public class GUIKontroler {
 	
 	public static void unesiUmrlog(String imePrezime,String posveta, String rezervisao, GregorianCalendar datumRodjenja,GregorianCalendar datumSmrti) {
 		groblje.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);
+		grobljeGui.osveziTabelu();
 	}
 	
 	public static Grob[][] vratiSveGrobove(){
