@@ -4,12 +4,10 @@ import java.awt.EventQueue;
 import java.awt.TextArea;
 import java.io.File;
 import java.sql.Savepoint;
-<<<<<<< HEAD
 import java.util.GregorianCalendar;
-=======
+
 import java.util.LinkedList;
 import java.util.List;
->>>>>>> branch 'master' of https://github.com/JGRASS/project12-2016.git
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -113,9 +111,8 @@ public class GUIKontroler {
 		groblje.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);
 	}
 	
-	public static Grob[][] vratiSveGrobove(){
-		return groblje.getGrobovi();
+	public static LinkedList<Grob> vratiSveGrobove(){
+		return groblje.vratiGrobove();
 	}
->>>>>>> branch 'master' of https://github.com/JGRASS/project12-2016.git
 } 
 
