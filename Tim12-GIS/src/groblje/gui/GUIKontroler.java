@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.TextArea;
 import java.io.File;
 import java.sql.Savepoint;
+import java.util.GregorianCalendar;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -95,5 +96,16 @@ public class GUIKontroler {
 		prozor.setVisible(true);
 		prozor.setLocationRelativeTo(null);
 	}
+	
+	public static void pokreniUnesiUmrlogProzor() {
+		UnesiUmrlogProzor prozor = new UnesiUmrlogProzor();
+		prozor.setVisible(true);
+		prozor.setLocationRelativeTo(null);
+	}
+	
+	public static void unesiUmrlog(String imePrezime,String posveta,GregorianCalendar datumRodjenja,GregorianCalendar datumSmrti) {
+		groblje.unesiUmrlog(imePrezime, posveta, datumRodjenja, datumSmrti);
+	}
+	
 } 
 
