@@ -26,6 +26,8 @@ import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
+import groblje.gui.models.GrobTableModel;
+
 public class GrobljeGUI extends JFrame {
 
 	private JPanel contentPane;
@@ -169,20 +171,7 @@ public class GrobljeGUI extends JFrame {
 			table.setFillsViewportHeight(true);
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
 			table.setAutoCreateRowSorter(true);
-			table.setModel(new DefaultTableModel(
-				new Object[][] {
-				},
-				new String[] {
-					"Šifra", "Ime i prezime", "Datum rodjenja", "Datum smrti", "Rezervisano?", "Rezervisao"
-				}
-			) {
-				boolean[] columnEditables = new boolean[] {
-					false, true, true, true, true, true, true, true
-				};
-				public boolean isCellEditable(int row, int column) {
-					return columnEditables[column];
-				}
-			});
+			table.setModel(new GrobTableModel(GUIKontroler.vratiSveGrobove()));
 			table.getColumnModel().getColumn(0).setResizable(false);
 			table.setPreferredSize(new Dimension(150, 10));
 		}

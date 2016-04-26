@@ -31,6 +31,8 @@ public class UnesiUmrlogProzor extends JFrame {
 	private JLabel lblDatumSmrti;
 	private JSpinner spinnerSmrt;
 	private JButton btnUnesiUmrlog;
+	private JLabel lblRezervisao;
+	private JTextField textRezervisao;
 
 	/**
 	 * Create the frame.
@@ -39,15 +41,17 @@ public class UnesiUmrlogProzor extends JFrame {
 		setTitle("Unesi umrlog");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 329, 293);
+		setBounds(100, 100, 329, 343);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(5, 2, 10, 10));
+		contentPane.setLayout(new GridLayout(6, 2, 10, 10));
 		contentPane.add(getLblImeIPrezime());
 		contentPane.add(getTextImePrezime());
 		contentPane.add(getLblPosveta());
 		contentPane.add(getTextPosveta());
+		contentPane.add(getLblRezervisao());
+		contentPane.add(getTextRezervisao());
 		contentPane.add(getLblDatumRoenja());
 		contentPane.add(getSpinnerRodjenje());
 		contentPane.add(getLblDatumSmrti());
@@ -113,13 +117,27 @@ public class UnesiUmrlogProzor extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					String imePrezime = textImePrezime.getText();
 					String posveta = textPosveta.getText();
+					String rezervisao = textRezervisao.getText();
 					GregorianCalendar datumRodjenja = (GregorianCalendar) spinnerRodjenje.getValue();
 					GregorianCalendar datumSmrti =  (GregorianCalendar) spinnerSmrt.getValue();
 					
-					GUIKontroler.unesiUmrlog(imePrezime, posveta, datumRodjenja, datumSmrti);
+					GUIKontroler.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);
 				}
 			});
 		}
 		return btnUnesiUmrlog;
+	}
+	private JLabel getLblRezervisao() {
+		if (lblRezervisao == null) {
+			lblRezervisao = new JLabel("Rezervisao");
+		}
+		return lblRezervisao;
+	}
+	private JTextField getTextRezervisao() {
+		if (textRezervisao == null) {
+			textRezervisao = new JTextField();
+			textRezervisao.setColumns(10);
+		}
+		return textRezervisao;
 	}
 }

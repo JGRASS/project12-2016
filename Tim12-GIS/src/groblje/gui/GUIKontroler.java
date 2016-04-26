@@ -4,17 +4,23 @@ import java.awt.EventQueue;
 import java.awt.TextArea;
 import java.io.File;
 import java.sql.Savepoint;
+<<<<<<< HEAD
 import java.util.GregorianCalendar;
+=======
+import java.util.LinkedList;
+import java.util.List;
+>>>>>>> branch 'master' of https://github.com/JGRASS/project12-2016.git
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
+import groblje.Grob;
 import groblje.Groblje;
-import grobljeInterfejs.GrobljeInterfejs;
+
 
 public class GUIKontroler {
 	private static GrobljeGUI grobljeGui;
-	private static GrobljeInterfejs groblje;
+	private static Groblje groblje;
 	/**
 	 * Launch the application.
 	 */
@@ -66,8 +72,8 @@ public class GUIKontroler {
 		return groblje.daLiJeSlobodno(sifra);
 	}
 	
-	public static void rezervisiMesto(String sifra){
-		groblje.rezervisi(sifra);
+	public static void rezervisiMesto(String sifra, String rezervisao){
+		groblje.rezervisi(sifra, rezervisao);
 	}
 	public static void pokreniRezervisiMestoProzor(){
 		RezervisiMestoProzor prozor = new RezervisiMestoProzor();
@@ -103,9 +109,13 @@ public class GUIKontroler {
 		prozor.setLocationRelativeTo(null);
 	}
 	
-	public static void unesiUmrlog(String imePrezime,String posveta,GregorianCalendar datumRodjenja,GregorianCalendar datumSmrti) {
-		groblje.unesiUmrlog(imePrezime, posveta, datumRodjenja, datumSmrti);
+	public static void unesiUmrlog(String imePrezime,String posveta, String rezervisao, GregorianCalendar datumRodjenja,GregorianCalendar datumSmrti) {
+		groblje.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);
 	}
 	
+	public static Grob[][] vratiSveGrobove(){
+		return groblje.getGrobovi();
+	}
+>>>>>>> branch 'master' of https://github.com/JGRASS/project12-2016.git
 } 
 
