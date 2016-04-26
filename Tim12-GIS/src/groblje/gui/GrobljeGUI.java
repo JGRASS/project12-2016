@@ -167,8 +167,6 @@ public class GrobljeGUI extends JFrame {
 		if (table == null) {
 			table = new JTable();
 			table.setFillsViewportHeight(true);
-			table.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-			table.setAutoCreateRowSorter(true);
 			table.setModel(new GrobTableModel(GUIKontroler.vratiSveGrobove()));
 			table.getColumnModel().getColumn(0).setResizable(false);
 			table.setPreferredSize(new Dimension(150, 10));
