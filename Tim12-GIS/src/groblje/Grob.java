@@ -238,6 +238,13 @@ public class Grob {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Grob [sifra=" + sifra + ", rezervisao=" + rezervisao + ", imePrezime=" + imePrezime + ", datumRodjenja="
+				+ datumRodjenja + ", datumSmrti=" + datumSmrti + ", posveta=" + posveta + ", rezervisano=" + rezervisano
+				+ "]";
+	}
 	
 	
 

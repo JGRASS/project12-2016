@@ -51,6 +51,7 @@ public class GrobljeGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GrobljeGUI() {
+		setResizable(false);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -58,11 +59,10 @@ public class GrobljeGUI extends JFrame {
 			}
 
 		});
-		setResizable(false);
 		setTitle("Groblje IS");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GrobljeGUI.class.getResource("/icons/black-cross-clipart-19684-black-cross-design.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 794, 470);
+		setBounds(100, 100, 733, 470);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -159,6 +159,7 @@ public class GrobljeGUI extends JFrame {
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
+			scrollPane.setAutoscrolls(true);
 			scrollPane.setViewportView(getTable());
 		}
 		return scrollPane;
@@ -239,6 +240,11 @@ public class GrobljeGUI extends JFrame {
 	private JMenuItem getMntmRefresh() {
 		if (mntmRefresh == null) {
 			mntmRefresh = new JMenuItem("Refresh");
+			mntmRefresh.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					osveziTabelu();
+				}
+			});
 			mntmRefresh.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));
 			mntmRefresh.setIcon(new ImageIcon(GrobljeGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
 		}
