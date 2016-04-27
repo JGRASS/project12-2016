@@ -12,7 +12,7 @@ public class GrobTableModel extends AbstractTableModel {
 	private LinkedList<Grob> grobovi;
 	
 	public GrobTableModel(LinkedList<Grob> grobovi) {
-		this.grobovi =grobovi;
+		this.grobovi = grobovi;
 	}
 	
 	public void staviGroboveUModel(LinkedList<Grob> grobovi){

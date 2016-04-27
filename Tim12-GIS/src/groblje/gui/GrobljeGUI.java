@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,6 +27,10 @@ import javax.swing.JMenuItem;
 import javax.swing.ImageIcon;
 
 import groblje.gui.models.GrobTableModel;
+import java.awt.Rectangle;
+import javax.swing.ScrollPaneConstants;
+import java.awt.Point;
+import javax.swing.table.DefaultTableModel;
 
 public class GrobljeGUI extends JFrame {
 
@@ -52,7 +58,6 @@ public class GrobljeGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public GrobljeGUI() {
-		setResizable(false);
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
@@ -63,7 +68,7 @@ public class GrobljeGUI extends JFrame {
 		setTitle("Groblje IS");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GrobljeGUI.class.getResource("/icons/black-cross-clipart-19684-black-cross-design.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 828, 448);
+		setBounds(100, 100, 828, 432);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -71,6 +76,7 @@ public class GrobljeGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.add(getPanel(), BorderLayout.EAST);
 		contentPane.add(getScrollPane(), BorderLayout.CENTER);
+		
 	}
 
 	private JPanel getPanel() {
@@ -161,18 +167,20 @@ public class GrobljeGUI extends JFrame {
 	private JScrollPane getScrollPane() {
 		if (scrollPane == null) {
 			scrollPane = new JScrollPane();
-			scrollPane.setAutoscrolls(true);
+			scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+			scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 			scrollPane.setViewportView(getTable());
+			
 		}
 		return scrollPane;
 	}
 	private JTable getTable() {
 		if (table == null) {
 			table = new JTable();
+			table.setRowHeight(20);
 			table.setFillsViewportHeight(true);
 			table.setModel(new GrobTableModel(GUIKontroler.vratiSveGrobove()));
 			table.getColumnModel().getColumn(0).setResizable(false);
-			table.setPreferredSize(new Dimension(150, 10));
 		}
 		return table;
 	}
