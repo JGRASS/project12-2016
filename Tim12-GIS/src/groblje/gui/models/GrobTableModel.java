@@ -1,5 +1,7 @@
 package groblje.gui.models;
 
+import java.sql.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 import javax.swing.table.AbstractTableModel;
@@ -44,9 +46,11 @@ public class GrobTableModel extends AbstractTableModel {
 		case 1: 
 			return g.getImePrezime();
 		case 2: 
-			return g.getDatumRodjenja();
+			if(g.getDatumRodjenja() == null) return g.getDatumRodjenja();
+			else return g.getDatumRodjenja().getTime();
 		case 3: 
-			return g.getDatumSmrti();
+			if(g.getDatumSmrti() == null) return g.getDatumSmrti();
+			else g.getDatumSmrti().getTime();
 		case 4: 
 			return g.getPosveta();
 		case 5: 
