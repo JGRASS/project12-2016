@@ -56,7 +56,7 @@ public class GUIKontroler {
 			File fajl = fc.getSelectedFile();
 
 
-			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Uspesno ste ocitali fajl!", "Poruka",
+			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Uspesno ste ocitali fajl: " +fajl , "Poruka",
 					JOptionPane.ERROR_MESSAGE);
 		}
 
@@ -121,6 +121,19 @@ public class GUIKontroler {
 	public static LinkedList<Grob> vratiSveGrobove(){
 		return groblje.vratiGrobove();
 	}
+	
+	public static void pokreniPretraziMrtveProzor() {
+		PretraziMrtvePoImenu prozor = new PretraziMrtvePoImenu();
+		prozor.setVisible(true);
+		prozor.setLocationRelativeTo(null);
+	}
+	
+	public static LinkedList<Grob> pretraziMrtvePoImenu (String imePrezime) {
+		return groblje.pretraziMrtve(imePrezime);
+	}
 
+	public static void osveziTabelu(){
+		grobljeGui.osveziTabelu();
+	}
 } 
 

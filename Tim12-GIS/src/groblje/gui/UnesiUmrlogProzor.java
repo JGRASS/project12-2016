@@ -35,7 +35,7 @@ public class UnesiUmrlogProzor extends JFrame {
 	private JSpinner spinnerDanR;
 	private JSpinner spinnerMesecR;
 	private JSpinner spinnerGodinaR;
-	private JLabel label;
+	private JLabel lblDatumSmrti;
 	private JSpinner spinnerDanS;
 	private JSpinner spinnerMesecS;
 	private JSpinner spinnerGodS;
@@ -63,7 +63,7 @@ public class UnesiUmrlogProzor extends JFrame {
 		contentPane.add(getBtnUnesiUmrlog());
 		contentPane.add(getSpinnerMesecR());
 		contentPane.add(getSpinnerGodinaR());
-		contentPane.add(getLabel());
+		contentPane.add(getLblDatumSmrti());
 		contentPane.add(getSpinnerDanS());
 		contentPane.add(getSpinnerMesecS());
 		contentPane.add(getSpinnerGodS());
@@ -171,12 +171,12 @@ public class UnesiUmrlogProzor extends JFrame {
 		}
 		return spinnerGodinaR;
 	}
-	private JLabel getLabel() {
-		if (label == null) {
-			label = new JLabel("Datum ro\u0111enja");
-			label.setBounds(5, 213, 151, 42);
+	private JLabel getLblDatumSmrti() {
+		if (lblDatumSmrti == null) {
+			lblDatumSmrti = new JLabel("Datum smrti");
+			lblDatumSmrti.setBounds(5, 213, 151, 42);
 		}
-		return label;
+		return lblDatumSmrti;
 	}
 	private JSpinner getSpinnerDanS() {
 		if (spinnerDanS == null) {
