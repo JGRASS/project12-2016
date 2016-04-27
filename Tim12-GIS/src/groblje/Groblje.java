@@ -1,5 +1,12 @@
 package groblje;
 
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 import java.util.LinkedList;
@@ -12,7 +19,7 @@ import grobljeInterfejs.GrobljeInterfejs;
  * @author Tim12
  *
  */
-public class Groblje implements GrobljeInterfejs {
+public class Groblje implements Serializable, GrobljeInterfejs{
 
 	/**
 	 * Naziv groblja kao String
@@ -183,25 +190,34 @@ public class Groblje implements GrobljeInterfejs {
 
 	@Override
 
-	public void unesiUmrlog(String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja,
+	public void unesiUmrlog (String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja,
 			GregorianCalendar datumSmrti) {
 		if (imaLiSlobodnihMesta() == false)
 			throw new RuntimeException("Sva mesta su zauzeta!");
 
-		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi[i].length; j++) {
-				if (grobovi[i][j].isRezervisano() == false) {
+		try{
+			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("grobovi.out")));
+		
 
-					grobovi[i][j].setRezervisao(rezervisao);
-					grobovi[i][j].setDatumRodjenja(datumRodjenja);
-					grobovi[i][j].setDatumSmrti(datumSmrti);
-					grobovi[i][j].setImePrezime(imePrezime);
-					grobovi[i][j].setPosveta(posveta);
-					grobovi[i][j].setRezervisano(true);
-					return;
+			for (int i = 0; i < grobovi.length; i++) {
+				for (int j = 0; j < grobovi[i].length; j++) {
+					if (grobovi[i][j].isRezervisano() == false) {
+						grobovi[i][j].setRezervisao(rezervisao);
+						grobovi[i][j].setDatumRodjenja(datumRodjenja);
+						grobovi[i][j].setDatumSmrti(datumSmrti);
+						grobovi[i][j].setImePrezime(imePrezime);
+						grobovi[i][j].setPosveta(posveta);
+						grobovi[i][j].setRezervisano(true);
+						out.writeObject(grobovi[i][j]);
+					
+						}
+					} 
 				}
+			out.close();
+			}catch(Exception e){
+				
 			}
-		}
+					return;
 	}
 
 	@Override

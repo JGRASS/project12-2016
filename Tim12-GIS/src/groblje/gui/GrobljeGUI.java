@@ -45,6 +45,7 @@ public class GrobljeGUI extends JFrame {
 	private JMenu mnHelp;
 	private JMenuItem mntmAbout;
 	private JMenuItem mntmRefresh;
+	private JMenuItem mntmSave;
 
 
 	/**
@@ -62,7 +63,7 @@ public class GrobljeGUI extends JFrame {
 		setTitle("Groblje IS");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GrobljeGUI.class.getResource("/icons/black-cross-clipart-19684-black-cross-design.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 794, 470);
+		setBounds(100, 100, 828, 448);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -186,6 +187,7 @@ public class GrobljeGUI extends JFrame {
 		if (mnFile == null) {
 			mnFile = new JMenu("File");
 			mnFile.add(getMntmOpen());
+			mnFile.add(getMntmSave());
 			mnFile.add(getMntmRefresh());
 			mnFile.add(getMntmExit());
 		}
@@ -240,6 +242,11 @@ public class GrobljeGUI extends JFrame {
 	private JMenuItem getMntmRefresh() {
 		if (mntmRefresh == null) {
 			mntmRefresh = new JMenuItem("Refresh");
+			mntmRefresh.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.osveziTabelu();
+				}
+			});
 			mntmRefresh.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_R, InputEvent.CTRL_MASK));
 			mntmRefresh.setIcon(new ImageIcon(GrobljeGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/Computer.gif")));
 		}
@@ -250,5 +257,13 @@ public class GrobljeGUI extends JFrame {
 
 		GrobTableModel model = (GrobTableModel) table.getModel();
 		model.staviGroboveUModel(GUIKontroler.vratiSveGrobove());
+	}
+	private JMenuItem getMntmSave() {
+		if (mntmSave == null) {
+			mntmSave = new JMenuItem("Save");
+			mntmSave.setIcon(new ImageIcon(GrobljeGUI.class.getResource("/javax/swing/plaf/metal/icons/ocean/floppy.gif")));
+			mntmSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+		}
+		return mntmSave;
 	}
 }

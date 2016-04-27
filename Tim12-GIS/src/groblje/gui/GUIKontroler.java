@@ -56,7 +56,7 @@ public class GUIKontroler {
 			File fajl = fc.getSelectedFile();
 
 
-			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Uspesno ste ocitali fajl!", "Poruka",
+			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Uspesno ste ocitali fajl: " +fajl , "Poruka",
 					JOptionPane.ERROR_MESSAGE);
 		}
 
@@ -132,5 +132,8 @@ public class GUIKontroler {
 		return groblje.pretraziMrtve(imePrezime);
 	}
 
+	public static void osveziTabelu(){
+		grobljeGui.osveziTabelu();
+	}
 } 
 

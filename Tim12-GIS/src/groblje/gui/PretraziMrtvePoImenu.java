@@ -67,6 +67,7 @@ public class PretraziMrtvePoImenu extends JFrame {
 	private JTextArea getTextAreaMrtvi() {
 		if (textAreaMrtvi == null) {
 			textAreaMrtvi = new JTextArea();
+			textAreaMrtvi.setEditable(false);
 		}
 		return textAreaMrtvi;
 	}
