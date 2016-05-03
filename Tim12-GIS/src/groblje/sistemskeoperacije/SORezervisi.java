@@ -1,16 +1,15 @@
 package groblje.sistemskeoperacije;
 
 import groblje.Grob;
-import groblje.Groblje;
 
 public class SORezervisi {
 
-	public static void izvrsi(String sifra, String rezervisao, Grob[][] grobovi) {
+	public static int izvrsi(String sifra, String rezervisao, Grob[][] grobovi, int brojSlobodnih) {
 		if (sifra == null || sifra.equals("") || rezervisao == null || rezervisao.isEmpty() == true) {
 			throw new RuntimeException("Greska!");
 		}
 
-		if (!(SOImaLiSlobodnih.izvrsi())) {
+		if (!(SOImaLiSlobodnih.izvrsi(brojSlobodnih))) {
 			throw new RuntimeException("Nema slobodnih grobova.");
 		}
 
@@ -25,7 +24,7 @@ public class SORezervisi {
 						} else {
 							grobovi[i][j].setRezervisano(true);
 							grobovi[i][j].setRezervisao(rezervisao);
-							Groblje.setBrojSlobodnih(Groblje.getBrojSlobodnih()-1);
+							brojSlobodnih--;
 							izvrseno = true;
 						}
 					}
@@ -37,6 +36,7 @@ public class SORezervisi {
 			throw new RuntimeException("Grob sa sifrom " + sifra + " ne postoji!");
 		}
 
+		return brojSlobodnih;
 	}
 
 }

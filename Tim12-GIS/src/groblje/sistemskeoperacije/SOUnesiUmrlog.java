@@ -10,8 +10,8 @@ import groblje.Grob;
 public class SOUnesiUmrlog {
 
 	public static void izvrsi(String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja,
-			GregorianCalendar datumSmrti, Grob[][] grobovi) {
-		if (SOImaLiSlobodnih.izvrsi() == false)
+			GregorianCalendar datumSmrti, Grob[][] grobovi, int brojSlobodnih) {
+		if (SOImaLiSlobodnih.izvrsi(brojSlobodnih) == false)
 			throw new RuntimeException("Sva mesta su zauzeta!");
 
 		try{

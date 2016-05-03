@@ -43,7 +43,7 @@ public class Groblje implements Serializable, GrobljeInterfejs{
 	/**
 	 * Broj slobodnih mesta kao int
 	 */
-	private static int brojSlobodnih = 20 * 20;
+	private int brojSlobodnih = 20 * 20;
 
 	public Grob[][] getGrobovi() {
 		return grobovi;
@@ -110,7 +110,7 @@ public class Groblje implements Serializable, GrobljeInterfejs{
 	 * 
 	 * @return broj slobodnih mesta
 	 */
-	public static int getBrojSlobodnih() {
+	public  int getBrojSlobodnih() {
 		return brojSlobodnih;
 	}
 
@@ -120,30 +120,30 @@ public class Groblje implements Serializable, GrobljeInterfejs{
 	 * @param brojSlobodnih
 	 *            Nova vrednost broja slobodnih mesta
 	 */
-	public static void setBrojSlobodnih(int brojSlob) {
-		brojSlobodnih = brojSlob;
+	public void setBrojSlobodnih(int brojSlobodnih) {
+		this.brojSlobodnih = brojSlobodnih;
 	}
 
 	@Override
 	public boolean imaLiSlobodnihMesta() {
-		return SOImaLiSlobodnih.izvrsi();
+		return SOImaLiSlobodnih.izvrsi(getBrojSlobodnih());
 	}
 
 	@Override
 	public void rezervisi(String sifra, String rezervisao) {
-		SORezervisi.izvrsi(sifra, rezervisao, grobovi);
+		setBrojSlobodnih(SORezervisi.izvrsi(sifra, rezervisao, grobovi, getBrojSlobodnih()));
 	}
 
 	@Override
 	public void oslobodiRezervaciju(String sifra) {
-		SOOslobodiRezervaciju.izvrsi(sifra, grobovi);
+		setBrojSlobodnih(SOOslobodiRezervaciju.izvrsi(sifra, grobovi, getBrojSlobodnih()));
 	}
 
 	@Override
 
 	public void unesiUmrlog (String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja,
 			GregorianCalendar datumSmrti) {
-		SOUnesiUmrlog.izvrsi(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti, grobovi);
+		SOUnesiUmrlog.izvrsi(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti, grobovi, getBrojSlobodnih());
 	}
 
 	@Override
