@@ -11,6 +11,13 @@ import java.util.GregorianCalendar;
 
 import java.util.LinkedList;
 
+import groblje.sistemskeoperacije.SODaLiJeSlobodno;
+import groblje.sistemskeoperacije.SOImaLiSlobodnih;
+import groblje.sistemskeoperacije.SOOslobodiRezervaciju;
+import groblje.sistemskeoperacije.SOPretraziMrtve;
+import groblje.sistemskeoperacije.SORezervisi;
+import groblje.sistemskeoperacije.SOUnesiUmrlog;
+import groblje.sistemskeoperacije.SOVratiGrobove;
 import grobljeInterfejs.GrobljeInterfejs;
 
 /**
@@ -36,7 +43,7 @@ public class Groblje implements Serializable, GrobljeInterfejs{
 	/**
 	 * Broj slobodnih mesta kao int
 	 */
-	private int brojSlobodnih = 20 * 20;
+	private static int brojSlobodnih = 20 * 20;
 
 	public Grob[][] getGrobovi() {
 		return grobovi;
@@ -103,7 +110,7 @@ public class Groblje implements Serializable, GrobljeInterfejs{
 	 * 
 	 * @return broj slobodnih mesta
 	 */
-	public int getBrojSlobodnih() {
+	public static int getBrojSlobodnih() {
 		return brojSlobodnih;
 	}
 
@@ -113,160 +120,44 @@ public class Groblje implements Serializable, GrobljeInterfejs{
 	 * @param brojSlobodnih
 	 *            Nova vrednost broja slobodnih mesta
 	 */
-	public void setBrojSlobodnih(int brojSlobodnih) {
-		this.brojSlobodnih = brojSlobodnih;
+	public static void setBrojSlobodnih(int brojSlob) {
+		brojSlobodnih = brojSlob;
 	}
 
 	@Override
 	public boolean imaLiSlobodnihMesta() {
-		if (getBrojSlobodnih() == 0)
-			return false;
-		return true;
+		return SOImaLiSlobodnih.izvrsi();
 	}
 
 	@Override
 	public void rezervisi(String sifra, String rezervisao) {
-		if (sifra == null || sifra.equals("") || rezervisao == null || rezervisao.isEmpty() == true) {
-			throw new RuntimeException("Greska!");
-		}
-
-		if (!(imaLiSlobodnihMesta())) {
-			throw new RuntimeException("Nema slobodnih grobova.");
-		}
-
-		boolean izvrseno = false;
-
-		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi[i].length; j++) {
-				if (grobovi[i][j].getSifra() != null) {
-					if (grobovi[i][j].getSifra().equals(sifra)) {
-						if (grobovi[i][j].isRezervisano()) {
-							throw new RuntimeException("Grob " + sifra + " je vec rezervisan!");
-						} else {
-							grobovi[i][j].setRezervisano(true);
-							grobovi[i][j].setRezervisao(rezervisao);
-							brojSlobodnih--;
-							izvrseno = true;
-						}
-					}
-				}
-			}
-		}
-
-		if (!(izvrseno)) {
-			throw new RuntimeException("Grob sa sifrom " + sifra + " ne postoji!");
-		}
-
+		SORezervisi.izvrsi(sifra, rezervisao, grobovi);
 	}
 
 	@Override
 	public void oslobodiRezervaciju(String sifra) {
-		if (sifra == null || sifra.equals("")) {
-			throw new RuntimeException("Greska!");
-		}
-
-		boolean izvrseno = false;
-
-		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi[i].length; j++) {
-				if (grobovi[i][j].getSifra().equals(sifra)) {
-					if (grobovi[i][j].isRezervisano()) {
-						grobovi[i][j].setRezervisano(false);
-						grobovi[i][j].setRezervisao(null);
-						brojSlobodnih++;
-						izvrseno = true;
-					} else {
-						throw new RuntimeException("Grob " + sifra + " nije rezervisan!");
-					}
-				}
-			}
-		}
-
-		if (!(izvrseno)) {
-			throw new RuntimeException("Grob sa sifrom " + sifra + " ne postoji!");
-		}
-
+		SOOslobodiRezervaciju.izvrsi(sifra, grobovi);
 	}
 
 	@Override
 
 	public void unesiUmrlog (String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja,
 			GregorianCalendar datumSmrti) {
-		if (imaLiSlobodnihMesta() == false)
-			throw new RuntimeException("Sva mesta su zauzeta!");
-
-		try{
-			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("grobovi.out")));
-		
-
-			for (int i = 0; i < grobovi.length; i++) {
-				for (int j = 0; j < grobovi[i].length; j++) {
-					if (grobovi[i][j].isRezervisano() == false) {
-						grobovi[i][j].setRezervisao(rezervisao);
-						grobovi[i][j].setDatumRodjenja(datumRodjenja);
-						grobovi[i][j].setDatumSmrti(datumSmrti);
-						grobovi[i][j].setImePrezime(imePrezime);
-						grobovi[i][j].setPosveta(posveta);
-						grobovi[i][j].setRezervisano(true);
-						out.writeObject(grobovi[i][j]);
-					
-						}
-					} 
-				}
-			out.close();
-			}catch(Exception e){
-				
-			}
-					return;
+		SOUnesiUmrlog.izvrsi(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti, grobovi);
 	}
 
 	@Override
 	public boolean daLiJeSlobodno(String sifra) {
-		// TODO Auto-generated method stub
-		if (sifra == null || sifra.equals("")) {
-			throw new RuntimeException("Greska!");
-		}
-		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi[i].length; j++) {
-
-				if (grobovi[i][j].getSifra().equals(sifra)) {
-					return grobovi[i][j].isRezervisano();
-				}
-
-			}
-		}
-		throw new RuntimeException("Ne postoji grobno mesto sa unetom sifrom.");
+		return SODaLiJeSlobodno.izvrsi(sifra, grobovi);
 	}
 
 	@Override
 
 	public LinkedList<Grob> pretraziMrtve(String imePrezime) {
-		if (imePrezime == null || imePrezime.equals("")) {
-			throw new RuntimeException("Greska!");
-		}
-		LinkedList<Grob> pretrazeni = new LinkedList<Grob>();
-		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi[i].length; j++) {
-				if (grobovi[i][j].getImePrezime() != null) {
-					if (grobovi[i][j].getImePrezime().equals(imePrezime)) {
-						pretrazeni.add(grobovi[i][j]);
-					}
-				}
-			}
-		}
-		return pretrazeni;
-
+		return SOPretraziMrtve.izvrsi(imePrezime, grobovi);
 	}
 
 	public LinkedList<Grob> vratiGrobove() {
-		
-		LinkedList<Grob> lista = new LinkedList<Grob>();
-		for (int i = 0; i < grobovi.length; i++) {
-			for (int j = 0; j < grobovi[i].length; j++) {
-				lista.add(grobovi[i][j]);
-			}
-
-		}
-		return lista;
+		return SOVratiGrobove.izvrsi(grobovi);
 	}
 }
