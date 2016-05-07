@@ -12,6 +12,7 @@ public class SOSacuvajUFajl {
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(putanja)));
 
+			
 			out.writeObject(grobovi);
 
 			out.close();

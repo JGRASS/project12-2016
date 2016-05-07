@@ -28,7 +28,7 @@ import grobljeInterfejs.GrobljeInterfejs;
  * @author Tim12
  *
  */
-public class Groblje implements Serializable, GrobljeInterfejs{
+public class Groblje implements GrobljeInterfejs{
 
 	/**
 	 * Naziv groblja kao String
@@ -166,7 +166,7 @@ public class Groblje implements Serializable, GrobljeInterfejs{
 	@Override
 	public void ucitajIzFajla(String putanja) {
 		// TODO Auto-generated method stub
-		SOUcitajIzFajla.izvrsi(putanja, grobovi);
+		SOUcitajIzFajla.izvrsi(putanja, SOVratiGrobove.izvrsi(grobovi));
 		
 	}
 
