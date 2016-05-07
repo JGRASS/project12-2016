@@ -140,12 +140,22 @@ public class GrobljeTest {
 	}
 	
 	@Test (expected = java.lang.RuntimeException.class)
-	public void testUnesiUmrlog() {
+	public void testUnesiUmrlogNemaSlobodnihMesta() {
 		groblje.setBrojSlobodnih(0);
 		groblje.unesiUmrlog("Pera Peric", null, "Jova Jovic", new GregorianCalendar(), null);
 	}
+	@Test (expected = java.lang.RuntimeException.class)
+	public void testUnesiUmrlogNull() {
+		groblje.unesiUmrlog(null, null, "Jova Jovic", new GregorianCalendar(), null);
+	}
+	@Test (expected = java.lang.RuntimeException.class)
+	public void testUnesiUmrlogPrazanString() {
+		groblje.setBrojSlobodnih(0);
+		groblje.unesiUmrlog("", null, "Jova Jovic", new GregorianCalendar(), null);
+	}
+	
 	@Test
-	public void testDaLiJeSlobodno() {
+	public void testDaLiJeSlobodnoDobarTest() {
 		groblje.rezervisi("00", "Pera Peric");
 		assertEquals(true, groblje.daLiJeSlobodno("00"));
 	}
