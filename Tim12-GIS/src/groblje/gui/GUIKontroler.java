@@ -101,11 +101,6 @@ public class GUIKontroler {
 		prozor.setLocationRelativeTo(null);
 	}
 
-	public static void pokreniAboutProzor() {
-		AboutProzor prozor = new AboutProzor();
-		prozor.setVisible(true);
-		prozor.setLocationRelativeTo(null);
-	}
 	
 	public static void pokreniUnesiUmrlogProzor() {
 		UnesiUmrlogProzor prozor = new UnesiUmrlogProzor();

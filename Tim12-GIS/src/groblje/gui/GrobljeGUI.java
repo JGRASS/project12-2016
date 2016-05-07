@@ -24,6 +24,7 @@ import java.awt.Toolkit;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
 import groblje.gui.models.GrobTableModel;
@@ -238,7 +239,8 @@ public class GrobljeGUI extends JFrame {
 			mntmAbout = new JMenuItem("About");
 			mntmAbout.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					GUIKontroler.pokreniAboutProzor();
+					JOptionPane.showMessageDialog(contentPane, "Aplikaciju napravili: \n"
+							+ "1. Ana Miliæ\n2. Nikola Manojloviæ\n3. Aleksandra Mikaševiæ ", "About", JOptionPane.INFORMATION_MESSAGE);
 				}
 			});
 			mntmAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, InputEvent.CTRL_MASK));
