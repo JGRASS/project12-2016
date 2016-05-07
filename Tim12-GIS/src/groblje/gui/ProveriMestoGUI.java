@@ -70,10 +70,14 @@ public class ProveriMestoGUI extends JFrame {
 			btnProveri.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					String sifra = txtSifra.getText();
-					if(!GUIKontroler.proveriOdredjenoMesto(sifra))
+					try {if(!GUIKontroler.proveriOdredjenoMesto(sifra))
 						textArea.setText("Mesto sa šifrom "+sifra+" je slobodno");
 					else 
 						textArea.setText("Mesto sa šifrom "+sifra+" nije slobodno");
+					}
+					catch(RuntimeException r) {
+						textArea.setText(r.getMessage());
+					}
 				}
 			});
 		}

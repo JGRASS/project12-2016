@@ -7,7 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
+import java.awt.JobAttributes;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
@@ -125,8 +128,11 @@ public class UnesiUmrlogProzor extends JFrame {
 					int mesecS = (int) spinnerMesecS.getValue();
 					int godinaS = (int) spinnerGodS.getValue();
 					GregorianCalendar datumSmrti= new GregorianCalendar(godinaS, mesecS, danS);
-
-					GUIKontroler.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);
+					try {
+					GUIKontroler.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);}
+					catch(RuntimeException r) {
+						JOptionPane.showMessageDialog(contentPane, r.getMessage(), "Greska", JOptionPane.ERROR_MESSAGE);
+					}
 			
 				}
 			});

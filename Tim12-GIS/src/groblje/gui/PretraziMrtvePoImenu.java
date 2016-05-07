@@ -78,6 +78,7 @@ public class PretraziMrtvePoImenu extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					
 					String imePrezime = textFieldImePrezime.getText();
+					try {
 					LinkedList<Grob> mrtvi = GUIKontroler.pretraziMrtvePoImenu(imePrezime);
 					
 					if ( mrtvi.isEmpty() ) {
@@ -91,6 +92,9 @@ public class PretraziMrtvePoImenu extends JFrame {
 							i++;
 						}
 						
+					}}
+					catch(RuntimeException r) {
+						textAreaMrtvi.setText(r.getMessage());
 					}
 					
 				}

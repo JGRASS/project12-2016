@@ -13,6 +13,8 @@ public class SOUnesiUmrlog {
 			GregorianCalendar datumSmrti, Grob[][] grobovi, int brojSlobodnih) {
 		if (SOImaLiSlobodnih.izvrsi(brojSlobodnih) == false)
 			throw new RuntimeException("Sva mesta su zauzeta!");
+		//napravi test za ovo
+		if(imePrezime == null || imePrezime.isEmpty() == true) throw new RuntimeException("Morate uneti ime i prezime umrlog!");
 
 		try{
 			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("grobovi.out")));
