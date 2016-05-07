@@ -46,6 +46,7 @@ public class GUIKontroler {
 		if (opcija == JOptionPane.YES_OPTION) {
 			System.exit(0);
 		}
+		
 	}
 	
 	public static void ucitajIzfajla() {
