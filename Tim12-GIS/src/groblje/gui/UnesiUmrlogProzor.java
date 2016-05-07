@@ -50,7 +50,7 @@ public class UnesiUmrlogProzor extends JFrame {
 		setTitle("Unesi umrlog");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 337, 343);
+		setBounds(100, 100, 396, 394);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -70,6 +70,27 @@ public class UnesiUmrlogProzor extends JFrame {
 		contentPane.add(getSpinnerDanS());
 		contentPane.add(getSpinnerMesecS());
 		contentPane.add(getSpinnerGodS());
+		
+		JLabel lblDan = new JLabel("Dan:");
+		lblDan.setBounds(166, 169, 48, 16);
+		contentPane.add(lblDan);
+		
+		JLabel lblMesec = new JLabel("Mesec:");
+		lblMesec.setBounds(226, 169, 56, 16);
+		contentPane.add(lblMesec);
+		
+		JLabel lblGodina = new JLabel("Godina:");
+		lblGodina.setBounds(284, 169, 56, 16);
+		contentPane.add(lblGodina);
+		
+		JButton btnOdustani = new JButton("Odustani");
+		btnOdustani.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		btnOdustani.setBounds(234, 309, 151, 37);
+		contentPane.add(btnOdustani);
 	}
 	private JLabel getLblImeIPrezime() {
 		if (lblImeIPrezime == null) {
@@ -81,7 +102,7 @@ public class UnesiUmrlogProzor extends JFrame {
 	private JTextField getTextImePrezime() {
 		if (textImePrezime == null) {
 			textImePrezime = new JTextField();
-			textImePrezime.setBounds(166, 6, 164, 42);
+			textImePrezime.setBounds(166, 6, 182, 42);
 			textImePrezime.setColumns(10);
 		}
 		return textImePrezime;
@@ -96,7 +117,7 @@ public class UnesiUmrlogProzor extends JFrame {
 	private JTextField getTextPosveta() {
 		if (textPosveta == null) {
 			textPosveta = new JTextField();
-			textPosveta.setBounds(166, 58, 164, 42);
+			textPosveta.setBounds(166, 58, 182, 42);
 			textPosveta.setColumns(10);
 		}
 		return textPosveta;
@@ -104,14 +125,14 @@ public class UnesiUmrlogProzor extends JFrame {
 	private JLabel getLblDatumRoenja() {
 		if (lblDatumRoenja == null) {
 			lblDatumRoenja = new JLabel("Datum ro\u0111enja");
-			lblDatumRoenja.setBounds(5, 162, 151, 42);
+			lblDatumRoenja.setBounds(5, 198, 151, 42);
 		}
 		return lblDatumRoenja;
 	}
 	private JButton getBtnUnesiUmrlog() {
 		if (btnUnesiUmrlog == null) {
 			btnUnesiUmrlog = new JButton("Unesi umrlog");
-			btnUnesiUmrlog.setBounds(5, 266, 151, 37);
+			btnUnesiUmrlog.setBounds(5, 309, 151, 37);
 			btnUnesiUmrlog.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 				
@@ -122,12 +143,12 @@ public class UnesiUmrlogProzor extends JFrame {
 					int danR = (int) spinnerDanR.getValue();
 					int mesecR = (int) spinnerMesecR.getValue();
 					int godinaR = (int) spinnerGodinaR.getValue();
-					GregorianCalendar datumRodjenja = new GregorianCalendar(godinaR, mesecR, danR);
+					GregorianCalendar datumRodjenja = new GregorianCalendar(godinaR, mesecR-1, danR);
 					
 					int danS = (int) spinnerDanS.getValue();
 					int mesecS = (int) spinnerMesecS.getValue();
 					int godinaS = (int) spinnerGodS.getValue();
-					GregorianCalendar datumSmrti= new GregorianCalendar(godinaS, mesecS, danS);
+					GregorianCalendar datumSmrti= new GregorianCalendar(godinaS, mesecS-1, danS);
 					try {
 					GUIKontroler.unesiUmrlog(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti);}
 					catch(RuntimeException r) {
@@ -149,7 +170,7 @@ public class UnesiUmrlogProzor extends JFrame {
 	private JTextField getTextRezervisao() {
 		if (textRezervisao == null) {
 			textRezervisao = new JTextField();
-			textRezervisao.setBounds(166, 110, 164, 42);
+			textRezervisao.setBounds(166, 110, 182, 42);
 			textRezervisao.setColumns(10);
 		}
 		return textRezervisao;
@@ -157,53 +178,55 @@ public class UnesiUmrlogProzor extends JFrame {
 	private JSpinner getSpinnerDanR() {
 		if (spinnerDanR == null) {
 			spinnerDanR = new JSpinner();
-			spinnerDanR.setModel(new SpinnerNumberModel(1, 1, 31, 1));
-			spinnerDanR.setBounds(166, 162, 48, 42);
+			spinnerDanR.setModel(new SpinnerNumberModel(15, 1, 31, 1));
+			spinnerDanR.setBounds(166, 198, 48, 42);
 		}
 		return spinnerDanR;
 	}
 	private JSpinner getSpinnerMesecR() {
 		if (spinnerMesecR == null) {
 			spinnerMesecR = new JSpinner();
-			spinnerMesecR.setModel(new SpinnerNumberModel(1, 1, 12, 1));
-			spinnerMesecR.setBounds(224, 162, 48, 42);
+			spinnerMesecR.setModel(new SpinnerNumberModel(6, 1, 12, 1));
+			spinnerMesecR.setBounds(226, 198, 48, 42);
 		}
 		return spinnerMesecR;
 	}
 	private JSpinner getSpinnerGodinaR() {
 		if (spinnerGodinaR == null) {
 			spinnerGodinaR = new JSpinner();
-			spinnerGodinaR.setBounds(282, 162, 48, 42);
+			spinnerGodinaR.setModel(new SpinnerNumberModel(new Integer(1950), null, null, new Integer(1)));
+			spinnerGodinaR.setBounds(284, 198, 66, 42);
 		}
 		return spinnerGodinaR;
 	}
 	private JLabel getLblDatumSmrti() {
 		if (lblDatumSmrti == null) {
 			lblDatumSmrti = new JLabel("Datum smrti");
-			lblDatumSmrti.setBounds(5, 213, 151, 42);
+			lblDatumSmrti.setBounds(5, 253, 151, 42);
 		}
 		return lblDatumSmrti;
 	}
 	private JSpinner getSpinnerDanS() {
 		if (spinnerDanS == null) {
 			spinnerDanS = new JSpinner();
-			spinnerDanS.setModel(new SpinnerNumberModel(1, 1, 31, 1));
-			spinnerDanS.setBounds(166, 213, 48, 42);
+			spinnerDanS.setModel(new SpinnerNumberModel(15, 1, 31, 1));
+			spinnerDanS.setBounds(166, 253, 48, 42);
 		}
 		return spinnerDanS;
 	}
 	private JSpinner getSpinnerMesecS() {
 		if (spinnerMesecS == null) {
 			spinnerMesecS = new JSpinner();
-			spinnerMesecS.setModel(new SpinnerNumberModel(1, 1, 12, 1));
-			spinnerMesecS.setBounds(224, 213, 48, 42);
+			spinnerMesecS.setModel(new SpinnerNumberModel(6, 1, 12, 1));
+			spinnerMesecS.setBounds(224, 253, 48, 42);
 		}
 		return spinnerMesecS;
 	}
 	private JSpinner getSpinnerGodS() {
 		if (spinnerGodS == null) {
 			spinnerGodS = new JSpinner();
-			spinnerGodS.setBounds(282, 213, 48, 42);
+			spinnerGodS.setModel(new SpinnerNumberModel(new Integer(2016), null, null, new Integer(1)));
+			spinnerGodS.setBounds(282, 253, 66, 42);
 		}
 		return spinnerGodS;
 	}

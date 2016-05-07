@@ -1,6 +1,8 @@
 package groblje.gui.models;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
@@ -47,10 +49,22 @@ public class GrobTableModel extends AbstractTableModel {
 			return g.getImePrezime();
 		case 2: 
 			if(g.getDatumRodjenja() == null) return g.getDatumRodjenja();
-			else return g.getDatumRodjenja().getTime();
+			else { 
+					int dan = g.getDatumRodjenja().get(GregorianCalendar.DAY_OF_MONTH);
+					int mesec = g.getDatumRodjenja().get(GregorianCalendar.MONTH);
+					int godina = g.getDatumRodjenja().get(GregorianCalendar.YEAR);
+					String datum = ""+dan+":"+mesec+":"+godina;
+					return datum;
+					}
 		case 3: 
 			if(g.getDatumSmrti() == null) return g.getDatumSmrti();
-			else return g.getDatumSmrti().getTime();
+			else { 
+				int dan = g.getDatumSmrti().get(GregorianCalendar.DAY_OF_MONTH);
+				int mesec = g.getDatumSmrti().get(GregorianCalendar.MONTH);
+				int godina = g.getDatumSmrti().get(GregorianCalendar.YEAR);
+				String datum = ""+dan+":"+mesec+":"+godina;
+				return datum;
+				}
 		case 4: 
 			return g.getPosveta();
 		case 5: 
