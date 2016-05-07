@@ -29,7 +29,7 @@ import grobljeInterfejs.GrobljeInterfejs;
  *
  */
 
-public class Groblje implements GrobljeInterfejs{
+public class Groblje implements GrobljeInterfejs {
 
 	/**
 	 * Naziv groblja kao String
@@ -42,20 +42,32 @@ public class Groblje implements GrobljeInterfejs{
 	/**
 	 * Grobna mesta kao matrica klase Grob
 	 */
-	private  static Grob[][] grobovi = new Grob[20][20];
+	private static Grob[][] grobovi = new Grob[20][20];
 	/**
 	 * Broj slobodnih mesta kao int
 	 */
 	private int brojSlobodnih = 20 * 20;
 
+	/**
+	 * Metoda vraca matricu grobova
+	 * 
+	 * @return grobovi
+	 */
 	public Grob[][] getGrobovi() {
 		return grobovi;
 	}
 
+	/**
+	 * Metoda postavlja vrednost matrice grobovi
+	 * 
+	 * @param grobovi
+	 *            Grobna mesta
+	 */
 	public void setGrobovi(Grob[][] grobovi) {
 		this.grobovi = grobovi;
 	}
 
+	
 	public Groblje() {
 		for (int i = 0; i < grobovi.length; i++) {
 			for (int j = 0; j < grobovi[i].length; j++) {
@@ -113,7 +125,7 @@ public class Groblje implements GrobljeInterfejs{
 	 * 
 	 * @return broj slobodnih mesta
 	 */
-	public  int getBrojSlobodnih() {
+	public int getBrojSlobodnih() {
 		return brojSlobodnih;
 	}
 
@@ -144,7 +156,7 @@ public class Groblje implements GrobljeInterfejs{
 
 	@Override
 
-	public void unesiUmrlog (String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja,
+	public void unesiUmrlog(String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja,
 			GregorianCalendar datumSmrti) {
 		SOUnesiUmrlog.izvrsi(imePrezime, posveta, rezervisao, datumRodjenja, datumSmrti, grobovi, getBrojSlobodnih());
 	}
@@ -163,16 +175,15 @@ public class Groblje implements GrobljeInterfejs{
 	public LinkedList<Grob> vratiGrobove() {
 		return SOVratiGrobove.izvrsi(grobovi);
 	}
+
 	@Override
 	public void ucitajIzFajla(String putanja) {
-		// TODO Auto-generated method stub
 		SOUcitajIzFajla.izvrsi(putanja, grobovi);
-		
+
 	}
 
 	@Override
 	public void sacuvajUFajl(String putanja) {
-		// TODO Auto-generated method stub
 		SOSacuvajUFajl.izvrsi(putanja, grobovi);
 	}
 }

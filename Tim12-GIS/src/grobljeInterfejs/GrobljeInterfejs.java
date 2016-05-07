@@ -22,7 +22,9 @@ public interface GrobljeInterfejs {
 	 *            Sifra mesta za koje vrsimo proveru
 	 * @return da li je mesto slobodno
 	 * @throws java.lang.RuntimeException
-	 *             ako ne psotoji mesto sa unetom sifrom
+	 *             ako ne postoji mesto sa unetom sifrom
+	 * @throws java.lang.RuntimeException
+	 *             nije uneta sifra
 	 */
 	public boolean daLiJeSlobodno(String sifra);
 
@@ -32,7 +34,8 @@ public interface GrobljeInterfejs {
 	 * @param imePrezime
 	 *            Ime i prezime umrlog kog trazimo
 	 * @return lista grobova
-	 * 
+	 * @throws java.lang.RuntimeException
+	 *             nije uneto ime i prezime
 	 */
 	public LinkedList<Grob> pretraziMrtve(String imePrezime);
 
@@ -41,6 +44,8 @@ public interface GrobljeInterfejs {
 	 * 
 	 * @param sifra
 	 *            Sifra groba
+	 * @param rezervisao
+	 *            Ime i prezime onog ko je rezervisao grob
 	 * @throws java.lang.RuntimeException
 	 *             ako je uneta sifra:
 	 *             <ul>
@@ -68,22 +73,54 @@ public interface GrobljeInterfejs {
 	 *             <li>ne postoji</li>
 	 *             <li>vec je bio slobodan</li>
 	 *             </ul>
-	 * 
+	 * @throws java.lang.RuntimeException
+	 *             Trazeni grob nije ni bio rezervisan
+	 * @throws java.lang.RuntimeException
+	 *             Grob sa unetom sifrom ne postoji
 	 */
 	public void oslobodiRezervaciju(String sifra);
 
+	/**
+	 * Metoda unosi umrlog u groblje
+	 * 
+	 * @param imePrezime
+	 *            Ime i prezime umrlog
+	 * @param posveta
+	 *            Posveta umrlom
+	 * @param rezervisao
+	 *            Ime i prezime onog ko je rezervisao grob
+	 * @param datumRodjenja
+	 *            Datum rodjenja umrlog
+	 * @param datumSmrti
+	 *            Datum smrti umrlog
+	 * @throws java.lang.RuntimeException
+	 *             Sva mesta su zauzeta
+	 * @throws java.lang.RuntimeException
+	 *             ako je uneto ime i prezime:
+	 *             <ul>
+	 *             <li>null</li>
+	 *             <li>prazan String</li>
+	 *             </ul>
+	 */
+	public void unesiUmrlog(String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja,
+			GregorianCalendar datumSmrti);
 
 	/**
-	 * Metoda unosi novog umrlog u groblje.
+	 * Metoda ucivata objekte iz fajla
 	 * 
-	 * @param g
-	 *            Novi grob
+	 * @param putanja
 	 * @throws java.lang.RuntimeException
-	 *             ako su sva mesta zauzeta
+	 *             Pri bilo kod izuzetku
 	 */
-	public void unesiUmrlog(String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti);
-	
 	public void ucitajIzFajla(String putanja);
 
+	/**
+	 * Metoda cuva objekte u fajl
+	 * 
+	 * @param putanja
+	 * @throws java.lang.RuntimeException
+	 *             Pri bilo kod izuzetku
+	 * 
+	 */
 	public void sacuvajUFajl(String putanja);
 }
