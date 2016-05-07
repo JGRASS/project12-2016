@@ -68,7 +68,7 @@ public class GrobljeGUI extends JFrame {
 		});
 		setTitle("Groblje IS");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(GrobljeGUI.class.getResource("/icons/black-cross-clipart-19684-black-cross-design.png")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 828, 432);
 		setJMenuBar(getMenuBar_1());
 		contentPane = new JPanel();
