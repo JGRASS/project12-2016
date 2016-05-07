@@ -182,9 +182,10 @@ public class GrobljeTest {
 		g.setImePrezime("Pera Peric");
 		g1.setImePrezime("Jovana Jovic");
 		g2.setImePrezime("Pera Peric");
-		g.setDatumRodjenja(new GregorianCalendar());
+		GregorianCalendar datum = new GregorianCalendar();
+		g.setDatumRodjenja(datum);
 		g1.setDatumRodjenja(new GregorianCalendar());
-		g2.setDatumRodjenja(new GregorianCalendar());
+		g2.setDatumRodjenja(datum);
 		g.setRezervisano(true);
 		g1.setRezervisano(true);
 		g2.setRezervisano(true);
@@ -194,10 +195,9 @@ public class GrobljeTest {
 		pretrazeni.add(g);
 		pretrazeni.add(g2);
 
-		groblje.unesiUmrlog("Pera Peric", null, "Jova Jovic",new GregorianCalendar(), null);
+		groblje.unesiUmrlog("Pera Peric", null, "Jova Jovic",datum, null);
 		groblje.unesiUmrlog("Jovana Jovic", null, "Jova Jovic",new GregorianCalendar(), null);
-		groblje.unesiUmrlog("Pera Peric", null, "Jova Jovic",new GregorianCalendar(), null);
-
+		groblje.unesiUmrlog("Pera Peric", null, "Jova Jovic",datum, null);
 		assertEquals(pretrazeni, groblje.pretraziMrtve("Pera Peric"));
 	}
 	
