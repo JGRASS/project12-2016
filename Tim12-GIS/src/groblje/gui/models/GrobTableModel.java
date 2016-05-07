@@ -51,7 +51,7 @@ public class GrobTableModel extends AbstractTableModel {
 			if(g.getDatumRodjenja() == null) return g.getDatumRodjenja();
 			else { 
 					int dan = g.getDatumRodjenja().get(GregorianCalendar.DAY_OF_MONTH);
-					int mesec = g.getDatumRodjenja().get(GregorianCalendar.MONTH);
+					int mesec = g.getDatumRodjenja().get(GregorianCalendar.MONTH)+1;
 					int godina = g.getDatumRodjenja().get(GregorianCalendar.YEAR);
 					String datum = ""+dan+":"+mesec+":"+godina;
 					return datum;
@@ -60,7 +60,7 @@ public class GrobTableModel extends AbstractTableModel {
 			if(g.getDatumSmrti() == null) return g.getDatumSmrti();
 			else { 
 				int dan = g.getDatumSmrti().get(GregorianCalendar.DAY_OF_MONTH);
-				int mesec = g.getDatumSmrti().get(GregorianCalendar.MONTH);
+				int mesec = g.getDatumSmrti().get(GregorianCalendar.MONTH)+1;
 				int godina = g.getDatumSmrti().get(GregorianCalendar.YEAR);
 				String datum = ""+dan+":"+mesec+":"+godina;
 				return datum;

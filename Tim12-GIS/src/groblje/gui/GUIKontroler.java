@@ -95,9 +95,9 @@ public class GUIKontroler {
 	}
 	public static void proveriSlobodnaMesta(){
 		if(groblje.imaLiSlobodnihMesta())
-			JOptionPane.showInternalMessageDialog(grobljeGui.getContentPane(), "Na groblju trenutno ima slobodnih mesta!", "Poruka",JOptionPane.OK_CANCEL_OPTION);
+			JOptionPane.showInternalMessageDialog(grobljeGui.getContentPane(), "Na groblju trenutno ima slobodnih mesta!", "Poruka",JOptionPane.INFORMATION_MESSAGE);
 		else 
-			JOptionPane.showInternalMessageDialog(grobljeGui.getContentPane(), "Na groblju trenutno nema slobodnih mesta!", "Poruka",JOptionPane.OK_CANCEL_OPTION);
+			JOptionPane.showInternalMessageDialog(grobljeGui.getContentPane(), "Na groblju trenutno nema slobodnih mesta!", "Poruka",JOptionPane.ERROR_MESSAGE);
 	}
 	
 	public static boolean proveriOdredjenoMesto(String sifra){

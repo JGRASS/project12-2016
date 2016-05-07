@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.awt.event.ActionEvent;
 import java.awt.Dimension;
@@ -88,7 +89,9 @@ public class PretraziMrtvePoImenu extends JFrame {
 						int i = 0;
 						
 						while ( i < mrtvi.size() ) {
-							textAreaMrtvi.append("SIFRA: " + mrtvi.get(i).getSifra() + " IME I PREZIME:" + mrtvi.get(i).getImePrezime() + " DATUM SMRTI (mesec i godina): " + mrtvi.get(i).getDatumSmrti().MONTH + ". " + mrtvi.get(i).getDatumSmrti().YEAR + "\n");
+							textAreaMrtvi.append("SIFRA: " + mrtvi.get(i).getSifra() + " IME I PREZIME:" + mrtvi.get(i).getImePrezime()
+									+" DATUM SMRTI: "+mrtvi.get(i).getDatumSmrti().get(GregorianCalendar.DAY_OF_MONTH)+":" + (mrtvi.get(i).getDatumSmrti().get(GregorianCalendar.MONDAY)+1) 
+									+ ":" + mrtvi.get(i).getDatumSmrti().get(GregorianCalendar.YEAR) + "\n");
 							i++;
 						}
 						
