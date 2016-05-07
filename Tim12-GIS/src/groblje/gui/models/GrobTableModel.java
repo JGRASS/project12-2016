@@ -50,7 +50,7 @@ public class GrobTableModel extends AbstractTableModel {
 			else return g.getDatumRodjenja().getTime();
 		case 3: 
 			if(g.getDatumSmrti() == null) return g.getDatumSmrti();
-			else g.getDatumSmrti().getTime();
+			else return g.getDatumSmrti().getTime();
 		case 4: 
 			return g.getPosveta();
 		case 5: 

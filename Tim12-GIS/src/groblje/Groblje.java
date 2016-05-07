@@ -28,7 +28,8 @@ import grobljeInterfejs.GrobljeInterfejs;
  * @author Tim12
  *
  */
-public class Groblje implements  GrobljeInterfejs{
+
+public class Groblje implements GrobljeInterfejs{
 
 	/**
 	 * Naziv groblja kao String

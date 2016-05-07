@@ -1,7 +1,7 @@
 package groblje.sistemskeoperacije;
 
 import java.io.ObjectInputStream;
-import java.util.LinkedList;
+
 import java.io.BufferedInputStream;
 import groblje.Grob;
 import java.io.FileInputStream;
