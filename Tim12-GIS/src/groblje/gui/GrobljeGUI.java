@@ -52,6 +52,7 @@ public class GrobljeGUI extends JFrame {
 	private JMenu mnHelp;
 	private JMenuItem mntmAbout;
 	private JMenuItem mntmRefresh;
+	private JMenuItem mntmSave;
 
 
 	/**
@@ -197,6 +198,7 @@ public class GrobljeGUI extends JFrame {
 			mnFile = new JMenu("File");
 			mnFile.add(getMntmOpen());
 			mnFile.add(getMntmRefresh());
+			mnFile.add(getMntmSave());
 			mnFile.add(getMntmExit());
 		}
 		return mnFile;
@@ -267,5 +269,18 @@ public class GrobljeGUI extends JFrame {
 
 		GrobTableModel model = (GrobTableModel) table.getModel();
 		model.staviGroboveUModel(GUIKontroler.vratiSveGrobove());
+	}
+	private JMenuItem getMntmSave() {
+		if (mntmSave == null) {
+			mntmSave = new JMenuItem("Save");
+			mntmSave.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					GUIKontroler.sacuvajUFajl();
+				}
+			});
+			mntmSave.setIcon(new ImageIcon(GrobljeGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/FloppyDrive.gif")));
+			mntmSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
+		}
+		return mntmSave;
 	}
 }

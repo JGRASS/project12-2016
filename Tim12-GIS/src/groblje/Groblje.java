@@ -16,6 +16,8 @@ import groblje.sistemskeoperacije.SOImaLiSlobodnih;
 import groblje.sistemskeoperacije.SOOslobodiRezervaciju;
 import groblje.sistemskeoperacije.SOPretraziMrtve;
 import groblje.sistemskeoperacije.SORezervisi;
+import groblje.sistemskeoperacije.SOSacuvajUFajl;
+import groblje.sistemskeoperacije.SOUcitajIzFajla;
 import groblje.sistemskeoperacije.SOUnesiUmrlog;
 import groblje.sistemskeoperacije.SOVratiGrobove;
 import grobljeInterfejs.GrobljeInterfejs;
@@ -159,5 +161,18 @@ public class Groblje implements Serializable, GrobljeInterfejs{
 
 	public LinkedList<Grob> vratiGrobove() {
 		return SOVratiGrobove.izvrsi(grobovi);
+	}
+
+	@Override
+	public void ucitajIzFajla(String putanja) {
+		// TODO Auto-generated method stub
+		SOUcitajIzFajla.izvrsi(putanja, grobovi);
+		
+	}
+
+	@Override
+	public void sacuvajUFajl(String putanja) {
+		// TODO Auto-generated method stub
+		SOSacuvajUFajl.izvrsi(putanja, grobovi);
 	}
 }

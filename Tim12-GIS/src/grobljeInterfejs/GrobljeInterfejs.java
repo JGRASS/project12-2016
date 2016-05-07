@@ -83,4 +83,7 @@ public interface GrobljeInterfejs {
 	 */
 	public void unesiUmrlog(String imePrezime, String posveta, String rezervisao, GregorianCalendar datumRodjenja, GregorianCalendar datumSmrti);
 	
+	public void ucitajIzFajla(String putanja);
+
+	public void sacuvajUFajl(String putanja);
 }

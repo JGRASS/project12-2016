@@ -1,8 +1,5 @@
 package groblje.sistemskeoperacije;
 
-import java.io.BufferedOutputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 import java.util.GregorianCalendar;
 
 import groblje.Grob;
@@ -13,12 +10,9 @@ public class SOUnesiUmrlog {
 			GregorianCalendar datumSmrti, Grob[][] grobovi, int brojSlobodnih) {
 		if (SOImaLiSlobodnih.izvrsi(brojSlobodnih) == false)
 			throw new RuntimeException("Sva mesta su zauzeta!");
-		//napravi test za ovo
 		if(imePrezime == null || imePrezime.isEmpty() == true) throw new RuntimeException("Morate uneti ime i prezime umrlog!");
 
-		try{
-			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("grobovi.out")));
-		
+			
 
 			for (int i = 0; i < grobovi.length; i++) {
 				for (int j = 0; j < grobovi[i].length; j++) {
@@ -29,13 +23,11 @@ public class SOUnesiUmrlog {
 						grobovi[i][j].setImePrezime(imePrezime);
 						grobovi[i][j].setPosveta(posveta);
 						grobovi[i][j].setRezervisano(true);
-						out.writeObject(grobovi[i][j]);
 					
 						}
 					} 
-				}
-			out.close();
-			}catch(Exception e){
+				
+			
 				
 			}
 					return;

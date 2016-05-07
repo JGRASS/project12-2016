@@ -49,19 +49,49 @@ public class GUIKontroler {
 	}
 	
 	public static void ucitajIzfajla() {
+		try {
 		JFileChooser fc = new JFileChooser();
 		int povratnaVrednost = fc.showOpenDialog(grobljeGui.getContentPane());
 
 		if (povratnaVrednost == JFileChooser.APPROVE_OPTION) {
 			File fajl = fc.getSelectedFile();
-
-
+			groblje.ucitajIzFajla(fajl.getAbsolutePath());
+			grobljeGui.osveziTabelu();
 			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Uspesno ste ocitali fajl: " +fajl , "Poruka",
+					JOptionPane.INFORMATION_MESSAGE);
+		}
+		else {	JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Niste uspesno ocitali fajl." , "Poruka",
 					JOptionPane.ERROR_MESSAGE);
 		}
-
+		}
+		catch(Exception e){
+			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Niste uspesno ocitali fajl." , "Poruka",
+					JOptionPane.ERROR_MESSAGE);
+		}
 	}
 	
+	public static void sacuvajUFajl() {
+		try {
+			JFileChooser fc = new JFileChooser();
+			int povratnaVrednost = fc.showSaveDialog(grobljeGui.getContentPane());
+
+			if (povratnaVrednost == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+
+				groblje.sacuvajUFajl(file.getAbsolutePath());
+				JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Uspesno ste sacuvali fajl." , "Poruka",
+						JOptionPane.INFORMATION_MESSAGE);
+			}
+			else {
+				JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Niste uspesno sacuvali u fajl." , "Poruka",
+						JOptionPane.ERROR_MESSAGE);
+			}
+		}
+		catch(Exception e) {
+			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Niste uspesno sacuvali u fajl." , "Poruka",
+					JOptionPane.ERROR_MESSAGE);
+		}
+	}
 	public static void proveriSlobodnaMesta(){
 		if(groblje.imaLiSlobodnihMesta())
 			JOptionPane.showInternalMessageDialog(grobljeGui.getContentPane(), "Na groblju trenutno ima slobodnih mesta!", "Poruka",JOptionPane.OK_CANCEL_OPTION);
