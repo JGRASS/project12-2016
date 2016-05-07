@@ -65,7 +65,7 @@ public class GUIKontroler {
 		}
 		}
 		catch(Exception e){
-			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Niste uspesno ocitali fajl." , "Poruka",
+			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Niste uspesno ocitali fajl..." , "Poruka",
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}
@@ -88,7 +88,7 @@ public class GUIKontroler {
 			}
 		}
 		catch(Exception e) {
-			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Niste uspesno sacuvali u fajl." , "Poruka",
+			JOptionPane.showMessageDialog(grobljeGui.getContentPane(), "Niste uspesno sacuvali u fajl..." , "Poruka",
 					JOptionPane.ERROR_MESSAGE);
 		}
 	}

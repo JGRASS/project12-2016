@@ -1,5 +1,6 @@
 package groblje;
 
+import java.io.Serializable;
 import java.util.GregorianCalendar;
 
 /**
@@ -8,7 +9,7 @@ import java.util.GregorianCalendar;
  * @author Tim12
  *
  */
-public class Grob {
+public class Grob implements Serializable{
 
 	/**
 	 * Sirfa groba kao String

@@ -23,13 +23,13 @@ public class SOUnesiUmrlog {
 						grobovi[i][j].setImePrezime(imePrezime);
 						grobovi[i][j].setPosveta(posveta);
 						grobovi[i][j].setRezervisano(true);
-					
+						return;
 						}
 					} 
 				
 			
 				
 			}
-					return;
+					
 	}
 }

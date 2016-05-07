@@ -11,15 +11,10 @@ public class SOUcitajIzFajla {
 	public static void izvrsi(String putanja, Grob [] [] grobovi) {
 		try {
 			ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(putanja)));
-
-			LinkedList<Grob> grobovi2 = (LinkedList<Grob>) (in.readObject());
-			int p = 0;
+			Grob [][] grobovi2 = (Grob[][]) (in.readObject());
 			for (int i = 0; i < grobovi.length; i++) {
-				int j = 0;
-				while(j < grobovi.length && p < grobovi2.size()){
-					grobovi[i][j] = grobovi2.get(p);
-					p++;
-					j++;
+				for (int j = 0; j < grobovi.length; j++) {
+					grobovi[i][j] = grobovi2[i][j];
 				}
 			}
 
